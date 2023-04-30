@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "jobtify-server"
+version = "0.1.0"
+description = "jobtfity server"
+authors = ["neomujua <neomujua@kakao.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "jobtify_server"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
