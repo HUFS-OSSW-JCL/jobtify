@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Noto Sans KR"],
+        main: ["Pretendard"],
       },
     },
   },
