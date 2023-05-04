@@ -48,7 +48,7 @@ const theme = extendTheme({
 const LoginPage = () => {
   return (
     <ChakraProvider theme={theme}>
-      <div className="container max-w-[390px] mx-auto border-2 border-black flex flex-col items-center justify-center">
+      <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-center">
         <h1 className="font-main font-bold text-[44px] mt-[147px]">Jobtify</h1>
         <form>
           <Center mt="70px">
