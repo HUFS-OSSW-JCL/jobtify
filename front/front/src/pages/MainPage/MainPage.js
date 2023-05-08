@@ -1,9 +1,23 @@
 import Header from "./Header";
+import NoticeList from "./NoticeList/NoticeList";
+import { useState } from "react";
 
 const MainPage = () => {
+  const [isTracking, setIsTracking] = useState(false);
+  // const changeState = () = {
+  //   setIsTracking(!isTracking);
+  // };
+
+  const changeState = () => {
+    setIsTracking(!isTracking);
+  };
+
   return (
-    <div className="container max-w-[390px] h-[80px] mx-auto flex flex-col items-center justify-center bg-light-blue">
+    <div className="container max-w-[700px] mx-auto flex flex-col items-center justify-center bg-light-blue">
       <Header />
+      <button onClick={changeState}>changeState</button>
+      <NoticeList isTracking={isTracking} />
+      <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div>
     </div>
   );
 };
