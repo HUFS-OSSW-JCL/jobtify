@@ -7,6 +7,7 @@ import {
   extendTheme,
   Center,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-31px)",
@@ -67,12 +68,14 @@ const LoginPage = () => {
               </FormErrorMessage>
             </FormControl>
           </Center>
-          <button
-            type="submit"
-            className="mt-[30px] bg-red hover:bg-red2 text-white font-main text-[20px] font-bold w-[340px] h-[56px] rounded-md"
-          >
-            로그인
-          </button>
+          <Link to="/main">
+            <button
+              type="submit"
+              className="mt-[30px] bg-red hover:bg-red2 text-white font-main text-[20px] font-bold w-[340px] h-[56px] rounded-md"
+            >
+              로그인
+            </button>
+          </Link>
         </form>
       </div>
     </ChakraProvider>
