@@ -1,11 +1,20 @@
+import NoticeListItem from "./NoticeListItem";
+
 const NoticeList = (props) => {
   return (
     <div className="w-[346px] flex flex-col justify-center items-start">
       {props.isTracking ? (
         <div className="mt-[10px] container w-[346px] min-h-[380px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
-          <h1 className="font-main font-bold text-[24px] text-black mr-[167px] mt-[20px]">
+          <h1 className="font-main font-bold text-[24px] text-black mr-[167px] mt-[20px] mb-[20px]">
             나의 채용공고
           </h1>
+          <NoticeListItem isAvailable={true} />
+          <NoticeListItem isAvailable={true} />
+          <NoticeListItem isAvailable={true} />
+          <NoticeListItem isAvailable={true} />
+          <NoticeListItem isAvailable={false} />
+          <NoticeListItem isAvailable={false} />
+          <NoticeListItem isAvailable={false} />
         </div>
       ) : (
         <div className="mt-[10px] container w-[346px] min-h-[380px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
