@@ -13,7 +13,8 @@
 
 # :clipboard: 계획
 
-<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/445de94f-5d3f-4cd6-900b-866764a8ae15" width="70%">
+<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/bb0bddbb-060c-422f-96b0-9967ce7208c1" width="100%">
+<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/445de94f-5d3f-4cd6-900b-866764a8ae15" width="60%">
 
 <br>
 
