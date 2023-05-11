@@ -6,6 +6,7 @@ from fake_useragent import  UserAgent
 import time
 
 def SearchJob(keyword):
+    job_list = []
     options = Options()
     url = "https://www.jumpit.co.kr/"
     userAgent = UserAgent()
@@ -21,6 +22,14 @@ def SearchJob(keyword):
     time.sleep(2)
     search.send_keys(Keys.RETURN)
     time.sleep(5)
-    job_title = driver.find_elements(By.CLASS_NAME, "position_card_info_title")
-    for job in job_title:
-        print(job.text)
+    list = driver.find_element(By.CSS_SELECTOR, "#root > main > div > section.sc-fydGpi.hIHIfr")
+    jobs = list.find_elements(By.CSS_SELECTOR, "section > div")
+    for job in jobs:
+        try:
+            #job_title = job.find_element(By.TAG_NAME, "h2")
+            job_title = job.find_element(By.CSS_SELECTOR, "a > div.sc-gUQvok.iPhfkg > h2")
+            job_company = job.find_element(By.CSS_SELECTOR, "a > div.sc-gUQvok.iPhfkg > div > span")
+            job_list.append([job_title.text, job_company.text])
+        except Exception as e:
+            pass
+    return job_list

@@ -5,6 +5,7 @@ from fake_useragent import  UserAgent
 import time
 
 def SearchJob(keyword):
+    job_list = []
     options = Options()
     url = "https://www.jobkorea.co.kr/"
     userAgent = UserAgent()
@@ -19,7 +20,9 @@ def SearchJob(keyword):
     driver.find_element(By.XPATH, "//*[@id=\"common_search_btn\"]").click()
     time.sleep(5)
     element = driver.find_element(By.CSS_SELECTOR, "#content > div > div > div.cnt-list-wrap > div > div.recruit-info > div.lists > div > div.list-default > ul ")
-    job_list = element.find_elements(By.TAG_NAME, "li")
-    for job in job_list:
-        print(job.find_element(By.CLASS_NAME, "title").text)
-
+    job_lists = element.find_elements(By.TAG_NAME, "li")
+    for job in job_lists:
+        job_title = job.find_element(By.CSS_SELECTOR, "div > div.post-list-info > a")
+        job_company = job.find_element(By.CSS_SELECTOR, "div > div.post-list-corp > a")
+        job_list.append([job_title.text, job_company.text])
+    return job_list
