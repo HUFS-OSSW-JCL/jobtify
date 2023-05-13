@@ -3,6 +3,8 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from firebase_admin import auth
+from flask_cors import CORS
+
 # Use a service account.
 cred = credentials.Certificate('./env/jobtify-jcl-firebase-adminsdk-486oy-8b1b68b8bd.json')
 
@@ -11,7 +13,7 @@ app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 app = Flask(__name__)
-
+CORS(app)
 @app.route('/')
 def hello_world():
     print("test2")
@@ -36,4 +38,4 @@ def handle_json():
     return user.email
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5001)
