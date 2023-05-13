@@ -34,3 +34,6 @@ def handle_json():
     uid = data.get('uid')
     user = auth.get_user(uid)
     return user.email
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
