@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, make_response, jsonify
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -35,7 +35,7 @@ def handle_json():
     data = request.json
     uid = data.get('uid')
     user = auth.get_user(uid)
-    return user.email
+    return make_response(jsonify({'status': True, 'email': user.email}), 200)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
