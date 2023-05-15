@@ -1,75 +1,49 @@
-import {
-  ChakraProvider,
-  Input,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  extendTheme,
-  Center,
-} from "@chakra-ui/react";
-
 import FilterHeader from "./FilterHeader";
 import Keyword from "./Keyword";
 
-const activeLabelStyles = {
-  transform: "scale(0.85) translateY(-31px)",
-};
-const theme = extendTheme({
-  components: {
-    Form: {
-      variants: {
-        floating: {
-          container: {
-            _focusWithin: {
-              label: {
-                ...activeLabelStyles,
-              },
-            },
-            "input:not(:placeholder-shown) + label, .chakra-select__wrapper + label, textarea:not(:placeholder-shown) ~ label":
-              {
-                ...activeLabelStyles,
-              },
-            label: {
-              top: 2,
-              left: 0,
-              zIndex: 2,
-              position: "absolute",
-              backgroundColor: "white",
-              pointerEvents: "none",
-              mx: 3,
-              px: 1,
-              my: 2,
-              transformOrigin: "left top",
-            },
-          },
-        },
-      },
-    },
-  },
-});
-
 const AddFilter = () => {
   return (
-    <ChakraProvider theme={theme}>
-      <div className="container max-w-[395px] mx-auto flex flex-col items-center justify-center">
-        <FilterHeader />
-        <form className="flex flex-col justify-center">
-          <Center mt="40px">
-            <FormControl variant="floating" id="text" isRequird>
-              <Input placeholder=" " w="340px" h="56px" />
-              <FormLabel>필터명</FormLabel>
-              <FormErrorMessage>
-                올바른 필터명을 입력 해주세요.
-              </FormErrorMessage>
-            </FormControl>
-          </Center>
-          <p className="mt-[30px] font-main text-[18px] text-black font-bold">
-            직무 키워드
-          </p>
-          <Keyword />
-        </form>
-      </div>
-    </ChakraProvider>
+    <div className="container max-w-[395px] mx-auto flex flex-col items-center justify-center">
+      <FilterHeader />
+      <form className="w-[390px] ml-[70px] mt-[32px] flex flex-col items-start justify-center">
+        <label
+          for="filtername"
+          className="flex items-start font-bold text-gray-700 font-main"
+        >
+          필터 이름
+        </label>
+        <input
+          type="text"
+          id="filtername"
+          className="mt-[8px] rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-[320px] py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          name="filtername"
+          placeholder=""
+        />
+        <p className="space-x-1 mt-[32px] font-main text-[16px] text-black font-bold">
+          직무 키워드
+        </p>
+        <Keyword />
+        <label
+          for="location"
+          className="mt-[32px] flex items-start font-bold text-gray-700 font-main"
+        >
+          회사 위치
+        </label>
+        <input
+          type="text"
+          id="location"
+          className="mt-[5px] rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-[320px] py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          name="location"
+          placeholder=""
+        />
+        <label
+          for="location"
+          className="mt-[32px] flex items-start font-bold text-gray-700 font-main"
+        >
+          가져올 사이트
+        </label>
+      </form>
+    </div>
   );
 };
 

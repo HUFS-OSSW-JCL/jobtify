@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="container bg-light-blue max-w-[700px] h-[80px] mx-auto flex flex-row items-center justify-center">
+    <div className="container bg-light-blue w-[395px] h-[80px] mx-auto flex flex-row items-center justify-center">
       <h1 className="font-main text-black text-[32px] font-bold ml-[0px]">
         Jobtify
       </h1>
