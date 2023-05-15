@@ -9,7 +9,7 @@ const MainPage = () => {
   };
 
   return (
-    <div className="container max-w-full mx-auto flex flex-col items-center justify-center bg-light-blue">
+    <div className="container flex flex-col items-center justify-center max-w-full mx-auto bg-light-blue">
       <Header />
       <button onClick={changeState}>changeState</button>
       <NoticeList isTracking={isTracking} />
