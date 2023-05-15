@@ -35,7 +35,9 @@ def handle_json():
     data = request.json
     uid = data.get('uid')
     user = auth.get_user(uid)
-    return make_response(jsonify({'status': True, 'email': user.email}), 200)
+    response =  make_response(jsonify({'status': True, 'email': user.email}), 200)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5001)
