@@ -4,16 +4,12 @@ import { useState } from "react";
 
 const MainPage = () => {
   const [isTracking, setIsTracking] = useState(false);
-  // const changeState = () = {
-  //   setIsTracking(!isTracking);
-  // };
-
   const changeState = () => {
     setIsTracking(!isTracking);
   };
 
   return (
-    <div className="container max-w-[700px] mx-auto flex flex-col items-center justify-center bg-light-blue">
+    <div className="container flex flex-col items-center justify-center max-w-[395px] mx-auto bg-light-blue">
       <Header />
       <button onClick={changeState}>changeState</button>
       <NoticeList isTracking={isTracking} />
