@@ -6,6 +6,9 @@ from fake_useragent import  UserAgent
 import time
 
 class Crawler:
+    """
+    기본적인 크롬웹드라이버 설정
+    """
     def __init__(self, url):
         self.job_list = []
         self.options = Options()
@@ -13,12 +16,16 @@ class Crawler:
         self.userAgent = UserAgent()
         self.options.add_argument(f"user-agent = {self.userAgent.random}")
         self.driver = webdriver.Chrome()
-
+    """
+    처음에 클래스를 만들 때 인자로 받은 url을 여는 함수
+    """
     def OpenSite(self):
         self.driver.maximize_window()
         self.driver.get(self.url)
         time.sleep(5)
-
+    """
+    키워드를 입력받고, 검색하는 함수로, 검색창의 xpath를 가져와 클릭하고, 키워드를 입력한 다음에 엔터를 누르는 동작으로 이루어져 있음
+    """
     def Search(self, keyword, button_x_path, input_x_path):
         self.driver.find_element(By.XPATH, button_x_path).click()
         time.sleep(1)
@@ -26,18 +33,29 @@ class Crawler:
         time.sleep(1)
         self.driver.find_element(By.XPATH, input_x_path).send_keys(Keys.RETURN)
         time.sleep(5)
-
+    """
+    검색한 페이지에서 채용공고만 추출
+    """
     def GetJobInfo(self, contents_css_selector, joblists_css_selector):
         self.all_contents = self.driver.find_element(By.CSS_SELECTOR, contents_css_selector)
         self.all_lists = self.all_contents.find_elements(By.CSS_SELECTOR, joblists_css_selector)
     
-    def ReturnList(self, job_title_selector, job_company_selector):
+    """
+    GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
+    """
+    def ReturnList(self, job_title_selector, job_company_selector, job_during_selector, job_link_selector):
         for jobs in self.all_lists:
+            job_dict = {}
             try:
                 job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
                 job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
-                #job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector)
-                self.job_list.append([job_title.text, job_company.text])
+                job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
+                job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
+                job_dict['공고명'] = job_title.text
+                job_dict['회사명'] = job_company.text
+                job_dict['모집기간'] = job_during.text
+                job_dict['링크'] = job_link     
+                self.job_list.append(job_dict)
             except Exception as e:
                 pass
         return self.job_list
