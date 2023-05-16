@@ -1,6 +1,7 @@
 import Crawl_Function
 from selenium.webdriver.common.by import By
 
+
 def SearchJob(keyword):
     wanted = Crawl_Function.Crawler("https://www.wanted.co.kr/")
     wanted.OpenSite()
