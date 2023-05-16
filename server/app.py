@@ -36,7 +36,9 @@ def handle_json():
     uid = data.get('uid')
     user = auth.get_user(uid)
     response =  make_response(jsonify({'status': True, 'email': user.email}), 200)
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
     return response
 
 if __name__ == '__main__':
