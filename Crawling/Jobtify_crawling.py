@@ -4,5 +4,5 @@ import wanted
 import Incruit
 
 if __name__ == "__main__":
-    job_list = Incruit.SearchJob("개발자")
+    job_list = Saramin.SearchJob("개발자")
     print(job_list)
