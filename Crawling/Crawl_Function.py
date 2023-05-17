@@ -22,7 +22,7 @@ class Crawler:
     def OpenSite(self):
         self.driver.maximize_window()
         self.driver.get(self.url)
-        time.sleep(5)
+        time.sleep(1)
     """
     키워드를 입력받고, 검색하는 함수로, 검색창의 xpath를 가져와 클릭하고, 키워드를 입력한 다음에 엔터를 누르는 동작으로 이루어져 있음
     """
@@ -32,7 +32,7 @@ class Crawler:
         self.driver.find_element(By.XPATH, input_x_path).send_keys(keyword)
         time.sleep(1)
         self.driver.find_element(By.XPATH, input_x_path).send_keys(Keys.RETURN)
-        time.sleep(5)
+        self.driver.implicitly_wait(10)
     """
     검색한 페이지에서 채용공고만 추출
     """
@@ -49,12 +49,19 @@ class Crawler:
             try:
                 job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
                 job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
-                job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
                 job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
+                job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
+                """
+                
+                """
+                # if job_during == None: 
+                #     job_link.click()
+                #     time.sleep(3)
+                #     job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
                 job_dict['공고명'] = job_title.text
                 job_dict['회사명'] = job_company.text
-                job_dict['모집기간'] = job_during.text
                 job_dict['링크'] = job_link     
+                job_dict['모집기간'] = job_during.text
                 self.job_list.append(job_dict)
             except Exception as e:
                 pass
