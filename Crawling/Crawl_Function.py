@@ -32,13 +32,14 @@ class Crawler:
         self.driver.find_element(By.XPATH, input_x_path).send_keys(keyword)
         time.sleep(1)
         self.driver.find_element(By.XPATH, input_x_path).send_keys(Keys.RETURN)
-        self.driver.implicitly_wait(10)
+        time.sleep(2)
     """
     검색한 페이지에서 채용공고만 추출
     """
     def GetJobInfo(self, contents_css_selector, joblists_css_selector):
         self.all_contents = self.driver.find_element(By.CSS_SELECTOR, contents_css_selector)
         self.all_lists = self.all_contents.find_elements(By.CSS_SELECTOR, joblists_css_selector)
+        #print(self.all_lists)
     
     """
     GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
@@ -50,19 +51,28 @@ class Crawler:
                 job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
                 job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
                 job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
-                job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
-                """
-                
-                """
                 # if job_during == None: 
                 #     job_link.click()
-                #     time.sleep(3)
+                #     time.sleep(3)                
                 #     job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
                 job_dict['공고명'] = job_title.text
                 job_dict['회사명'] = job_company.text
                 job_dict['링크'] = job_link     
-                job_dict['모집기간'] = job_during.text
+                try:
+                    job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
+                    job_dict['모집기간'] = job_during.text
+                except Exception as e:
+                    pass
                 self.job_list.append(job_dict)
             except Exception as e:
                 pass
+
         return self.job_list
+    
+    def scroll_down(self,body):
+        self.driver.find_element(By.CSS_SELECTOR, body).send_keys(Keys.PAGE_DOWN)
+        time.sleep(1)
+    
+    def click(self, css):
+        self.driver.find_element(By.CSS_SELECTOR, css).click()
+        time.sleep(0.5)
