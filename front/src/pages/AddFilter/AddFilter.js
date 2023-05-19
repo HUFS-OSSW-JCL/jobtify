@@ -1,5 +1,10 @@
 import FilterHeader from "./FilterHeader";
 import Keyword from "./Keyword";
+import Chip from "../../components/Chip";
+import jobkorea from "../../assets/jobkorea.jpeg";
+import saramin from "../../assets/saramin.png";
+import wanted from "../../assets/wanted.jpg";
+import jumpit from "../../assets/jumpit.png";
 
 const AddFilter = () => {
   return (
@@ -42,6 +47,16 @@ const AddFilter = () => {
         >
           가져올 사이트
         </label>
+        <div className="flex flex-row">
+          <div className="flex-1">
+            <Chip name="잡코리아" pic={jobkorea} />
+            <Chip name="사람인" pic={saramin} />
+          </div>
+          <div className="flex-1">
+            <Chip name="원티드" pic={wanted} />
+            <Chip name="점핏" pic={jumpit} />
+          </div>
+        </div>
       </form>
     </div>
   );
