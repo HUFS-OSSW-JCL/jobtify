@@ -35,7 +35,7 @@ def handle_json():
     data = request.json
     uid = data.get('uid')
     user = auth.get_user(uid)
-    response =  make_response(jsonify({'title':'제목', 'keywords':'키워드1==키워드2==키워드3==', 'location': '서울', 'crawl':'사이트1==사이트2==', 'bookmark':True, 'link':'https://www.naver.com'}), 200)
+    response =  make_response(jsonify({'title':'JCL 프론트엔드 개발자', 'keywords':'프론트엔드==UI/UX==', 'location': '서울', 'crawl':'wanted==jumpit==rallit==', 'bookmark':True, 'link':'https://www.naver.com'}), 200)
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
