@@ -35,11 +35,11 @@ def handle_json():
     data = request.json
     uid = data.get('uid')
     user = auth.get_user(uid)
-    response =  make_response(jsonify({'title':'JCL 프론트엔드 개발자', 'keywords':'프론트엔드==UI/UX==', 'location': '서울', 'crawl':'wanted==jumpit==rallit==', 'bookmark':True, 'link':'https://www.naver.com'}), 200)
+    response =  make_response(jsonify({'title':'JCL 프론트엔드 개발자', 'keywords':'프론트엔드==UI/UX==', 'location': '서울', 'crawl':'wanted==jumpit==rallit==', 'bookmark':True, 'link':'https://www.naver.com', 'company':'HUFS'}), 200)
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    app.run(debug=True, host='0.0.0.0', port=8000)
