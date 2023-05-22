@@ -41,7 +41,7 @@ def handle_json():
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
     return response
 
-@app.route('/register', methods=['POST'])
+@app.route('/register_user', methods=['POST'])
 def register_user():
     data = request.json
     uid = data.get('uid')
@@ -53,6 +53,7 @@ def register_user():
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
     print(uid, keywords, country, sites)
+    print(data)
     return response
 
 if __name__ == '__main__':
