@@ -20,7 +20,7 @@ const Chip = (props) => {
           </div>
         </div>
       ) : (
-        <div className="w-max h-[45px] mt-[7px] hover: cursor-pointer border border-gray-400 flex flex-row justify-start items-center bg-white rounded-3xl transition-colors duration-300">
+        <div className="w-max h-[45px] mt-[7px] hover: cursor-pointer border border-gray-300 flex flex-row justify-start items-center bg-white rounded-3xl transition-colors duration-300">
           <div className="w-[28px] h-[28px] ml-[10px] flex justify-center items-center rounded-full border border-gray-300 transition-colors duration-300">
             <img className="rounded-full" src={props.pic} alt="jobkorea" />
           </div>
