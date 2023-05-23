@@ -10,9 +10,9 @@ def siteFilter(sitename, keyword):
         result = Incruit.SearchJob(keyword)
     elif sitename == "잡코리아":
         result = JobKorea.SearchJob(keyword)
-    elif sitename == "사람인":
+    elif sitename == "점핏":
         result = Saramin.JobKorea.SearchJob(keyword)
-    elif sitename == "원티드":
+    elif sitename == "랠릿":
         result = wanted.SearchJob(keyword)
     print(result)
 
