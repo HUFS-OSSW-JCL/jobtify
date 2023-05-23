@@ -54,6 +54,12 @@ def register_user():
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
     print(uid, keywords, country, sites)
     print(data)
+    doc_ref = db.collection(u'users').document(uid)
+    doc_ref.set({
+        u'keywords': keywords,
+        u'country': country,
+        u'sites': sites
+    })
     return response
 
 if __name__ == '__main__':
