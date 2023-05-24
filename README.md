@@ -4,7 +4,7 @@
 |이름|역할|GitHub|
 |------|---|---|
 |이원준|**팀장**, 백엔드 개발, 디자인| <a href="https://github.com/workoutplz"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
-|정승준|프론트엔드 개발| <a href="https://github.com/whateveriiwant"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
+|정승준|프론트엔드 개발, 디자인| <a href="https://github.com/whateveriiwant"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
 |최인성|크롤링 개발| <a href="https://github.com/CHOI-INSEONG"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
 
 
