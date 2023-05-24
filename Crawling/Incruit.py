@@ -21,6 +21,6 @@ def SearchJob(keyword):
     time.sleep(2)
     incruit.click("#SearchResultCount")
   
-    incruit.GetJobInfo("#incruit_contents > div > div > div.cBbslist_contenst", "li")
-    job_lists = incruit.ReturnList("div.cell_mid > div.cl_top","div.cell_first > div.cl_top > a","div.cell_last > div.cl_btm > span:nth-child(1)", "div.cell_mid > div.cl_top > a")
-    return job_lists
+    job_lists = incruit.GetJobInfo("#incruit_contents > div > div > div.cBbslist_contenst", "li")
+    job_dict = incruit.ReturnList(job_lists, "div.cell_mid > div.cl_top","div.cell_first > div.cl_top > a","div.cell_last > div.cl_btm > span:nth-child(1)", "div.cell_mid > div.cl_top > a")
+    return job_dict

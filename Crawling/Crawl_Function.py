@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from fake_useragent import  UserAgent
+from fake_useragent import UserAgent
 import time
 
 class Crawler:
@@ -13,8 +13,9 @@ class Crawler:
         self.job_list = []
         self.options = Options()
         self.url = url
-        self.userAgent = UserAgent()
-        self.options.add_argument(f"user-agent = {self.userAgent.random}")
+        self.ua = UserAgent()
+        self.ua.random
+        self.options.add_argument(f'user-agent = {self.ua}')
         self.driver = webdriver.Chrome()
     """
     처음에 클래스를 만들 때 인자로 받은 url을 여는 함수
@@ -39,13 +40,13 @@ class Crawler:
     def GetJobInfo(self, contents_css_selector, joblists_css_selector):
         self.all_contents = self.driver.find_element(By.CSS_SELECTOR, contents_css_selector)
         self.all_lists = self.all_contents.find_elements(By.CSS_SELECTOR, joblists_css_selector)
-        #print(self.all_lists)
+        return self.all_lists
     
     """
     GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
     """
-    def ReturnList(self, job_title_selector, job_company_selector, job_during_selector, job_link_selector):
-        for jobs in self.all_lists:
+    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_during_selector, job_link_selector):
+        for jobs in job_lists:
             job_dict = {}
             try:
                 job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
