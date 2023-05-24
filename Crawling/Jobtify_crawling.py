@@ -1,23 +1,22 @@
 import Saramin
-import JobKorea
 import wanted
 import Incruit
-import ray
+import Rallit
 import threading
 
 def siteFilter(sitename, keyword):
     if sitename == "인크루트":
         result = Incruit.SearchJob(keyword)
-    elif sitename == "잡코리아":
-        result = JobKorea.SearchJob(keyword)
-    elif sitename == "점핏":
-        result = Saramin.JobKorea.SearchJob(keyword)
-    elif sitename == "랠릿":
+    elif sitename == "원티드":
         result = wanted.SearchJob(keyword)
+    elif sitename == "점핏":
+        result = Saramin.SearchJob(keyword)
+    elif sitename == "랠릿":
+        result = Rallit.SearchJob(keyword)
     print(result)
 
 if __name__ == "__main__":
-    sitelist = ["잡코리아", "인크루트"]
+    sitelist = ["랠릿"]
     keys = list(input().split())
 
     threads = []
