@@ -29,26 +29,14 @@ def SearchJob(keyword):
                 f.click()
     except Exception:
         pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    time.sleep(1)
+    jumpit.driver.find_element(By.XPATH, "//*[@id=\"root\"]/main/div/div/div/div[1]/div[4]/div[1]/div[3]/button[2]").click()
+    time.sleep(1)
 
     #크롤링해오는 부분
-    # try:
-    #     job_lists = jumpit.GetJobInfo("#root > main > div > section.sc-gXRojI.lnTxpv > section", "div")
-    #     job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", " ", "a")
-    # except Exception as e:
-    #     pass
-    # return job_dict
+    try:
+        job_lists = jumpit.GetJobInfo("#root > main > div > section.sc-gXRojI.lnTxpv > section", "div")
+        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", " ", "a")
+    except Exception as e:
+        pass
+    return job_dict

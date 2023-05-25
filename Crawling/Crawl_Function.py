@@ -14,14 +14,21 @@ class Crawler:
         self.options = Options()
         self.url = url
         self.ua = UserAgent()
-        self.ua.random
-        self.options.add_argument(f'user-agent = {self.ua}')
-        self.driver = webdriver.Chrome()
+        # self.ua.random
+        # self.options.add_argument(f'user-agent = {self.ua}')
+        self.options.add_argument("window-size=1920,1080")
+        self.options.add_argument("--headless")
+        #self.options.add_argument('--no-sandbox')
+        # self.options.add_argument('--ignore-certificate-errors')
+        # self.options.add_argument('--allow-running-insecure-content')
+        #self.options.add_argument('--disable-dev-shm-usage')
+        #self.options.add_argument("'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'")
+        self.driver = webdriver.Chrome(chrome_options=self.options)
     """
     처음에 클래스를 만들 때 인자로 받은 url을 여는 함수
     """
     def OpenSite(self):
-        self.driver.maximize_window()
+        #self.driver.maximize_window()
         self.driver.get(self.url)
         time.sleep(1)
     """
@@ -52,9 +59,9 @@ class Crawler:
                 job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
                 job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
                 job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
-                # if job_during == None: 
+                # if job_during == None:
                 #     job_link.click()
-                #     time.sleep(3)                
+                #     time.sleep(3)
                 #     job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
                 job_dict['공고명'] = job_title.text
                 job_dict['회사명'] = job_company.text

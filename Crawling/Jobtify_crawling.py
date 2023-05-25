@@ -28,6 +28,6 @@ if __name__ == "__main__":
     # for t in threads:
     #     t.join()
 
-    a = Jumpit.SearchJob("PM")
+    a = wanted.SearchJob("PM")
     print(a)
 
