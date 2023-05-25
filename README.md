@@ -10,12 +10,21 @@
 
 <br> 
 
+# :airplane: 프로젝트 개요
+## 🤔 주제 선정 동기
+- 채용 전쟁’이라는 말이 있을 정도로 한 사람의 채용을 위한 기업들간의 경쟁이 심화됨에
+따라 ‘채용 브랜딩’처럼 각 회사만의 채용 전략이 생겨나고 있다.
+- 이런 상황 속에서 회사만의 채용 공고 페이지를 운영하는 경우가 늘어나게 되었다.
+- 새로운 채용 공고가 올라왔는지 알기 위해서는 반드시 접속해야하는데, 이 과정이 번거로
+울 뿐만 아니라, 기존에 어떤 채용 공고가 있었고, 새로 올라온 채용 공고는 무엇인지 알기
+쉽지 않다.
+- 이에 새로운 채용 공고가 올라왔을 경우에만 알림을 주고, 채용 공고 등록, 삭제 등 변화
+를 쉽게 알 수 있는 서비스를 만들고자 한다.
 
-# :clipboard: 계획
-
-<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/bb0bddbb-060c-422f-96b0-9967ce7208c1" width="100%">
-<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/445de94f-5d3f-4cd6-900b-866764a8ae15" width="60%">
 
 <br>
 
-# :airplane: 프로젝트 개요
+## :clipboard: 계획
+
+<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/bb0bddbb-060c-422f-96b0-9967ce7208c1" width="100%">
+<img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/445de94f-5d3f-4cd6-900b-866764a8ae15" width="60%">
