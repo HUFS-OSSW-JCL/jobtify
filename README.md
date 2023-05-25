@@ -28,3 +28,29 @@
 
 <img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/bb0bddbb-060c-422f-96b0-9967ce7208c1" width="100%">
 <img src="https://github.com/whateveriiwant/whateveriiwant/assets/80333011/445de94f-5d3f-4cd6-900b-866764a8ae15" width="60%">
+
+<br>
+
+## 🛠️ 기술 스택
+### Front-End
+<div style="flex-direction: row">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/> 
+  <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
+</div>
+
+
+### Back-End
+<div style="flex-direction: row">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Django-092E20?style=flat-square&logo=Django&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=black"/>
+</div>
+
+
+### Scraping
+<div style="flex-direction: row">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=Selenium&logoColor=white"/>
+</div>
+
