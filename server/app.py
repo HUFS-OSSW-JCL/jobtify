@@ -64,14 +64,17 @@ def register_user():
 
 @app.route('/get_bookmarks', methods=['POST'])
 def get_bookmarks():
+    bookmarks=[]
     data = request.json
     uid = data.get('uid')
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     docs = doc_ref.stream()
-    response = make_response(jsonify({'status':'good'}))
     for doc in docs:
-        print(f'{doc.id} => {doc.to_dict()}')
+        if doc.to_dict()['bookmark'] == True:
+            print("It's true!")
+            bookmarks.append(doc.to_dict())
+    response = make_response(jsonify(bookmarks))
     return response
-
+ 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
