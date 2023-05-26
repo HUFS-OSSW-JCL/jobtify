@@ -76,5 +76,20 @@ def get_bookmarks():
     response = make_response(jsonify(bookmarks))
     return response
  
+@app.route('/set_bookmark', methods=['POST'])
+def set_bookmark():
+    data = request.json
+    uid = data.get('uid')
+    doc_ref = db.collection(u'users').document(uid).collection(u'jds')
+    docs = doc_ref.stream()
+    for doc in docs:
+        if doc.to_dict()['link'] == data.get('link'):
+            print('a')
+            print(doc.to_dict())
+            print(doc)
+#            doc['bookmark'].set(data.get('bookmark'))
+    response = make_response(jsonify({'status': 'good'}))
+    return response
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
