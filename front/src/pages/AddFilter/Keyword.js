@@ -41,8 +41,9 @@ const Keyword = () => {
           ))}
         </div>
       )}
+      <input type="text" className="hidden" />
       <input
-        className="w-[320px] mt-[15px] text-[15px] outline-none border-b border-gray-500"
+        className="w-[320px] mt-[5px] text-[15px] outline-none border-b border-gray-300"
         type="text"
         placeholder="키워드를 입력하세요"
         value={tag}
