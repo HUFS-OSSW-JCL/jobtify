@@ -44,8 +44,6 @@ def SearchJob(keyword):
     incruit.click("#SearchResultCount")
 
 
-
-
     try:
         while 1:
             job_lists = incruit.GetJobInfo("#incruit_contents > div > div > div.cBbslist_contenst", "li")
