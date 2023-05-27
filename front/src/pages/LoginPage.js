@@ -7,8 +7,9 @@ import {
   extendTheme,
   Center,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../util/AuthContext";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const activeLabelStyles = {
@@ -49,6 +50,8 @@ const theme = extendTheme({
 });
 
 const LoginPage = () => {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailInputHandler = (e) => setEmail(e.target.value);
@@ -56,15 +59,18 @@ const LoginPage = () => {
 
   const auth = getAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const onLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password).then((user) => {
-        console.log(user);
-        navigate(`/main`);
+        // console.log(user);
+        navigate(`/`);
+        login();
       });
     } catch (e) {
       console.log(e);
+      setError(e.message);
     }
   };
 
@@ -111,6 +117,7 @@ const LoginPage = () => {
             로그인
           </button>
         </form>
+        {error && <p>{error}</p>}
       </div>
     </ChakraProvider>
   );

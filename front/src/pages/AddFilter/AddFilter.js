@@ -1,6 +1,6 @@
 import FilterHeader from "./FilterHeader";
 import Keyword from "./Keyword";
-import Modal from "../../components/Modal";
+// import Modal from "../../components/Modal";
 import Chip from "../../components/Chip";
 import Location from "../../components/Location";
 import jobkorea from "../../assets/jobkorea.jpeg";
