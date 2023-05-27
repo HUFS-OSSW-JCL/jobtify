@@ -7,8 +7,10 @@ import {
   extendTheme,
   Center,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../util/AuthContext";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-31px)",
@@ -48,10 +50,29 @@ const theme = extendTheme({
 });
 
 const LoginPage = () => {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailInputHandler = (e) => setEmail(e.target.value);
   const pwInputHandler = (e) => setPassword(e.target.value);
+
+  const auth = getAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const onLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password).then((user) => {
+        // console.log(user);
+        navigate(`/`);
+        login();
+      });
+    } catch (e) {
+      console.log(e);
+      setError(e.message);
+    }
+  };
 
   return (
     <ChakraProvider theme={theme}>
@@ -60,21 +81,20 @@ const LoginPage = () => {
         <form>
           <Center mt="65px">
             <FormControl variant="floating" id="email">
-              <FormLabel>이메일</FormLabel>
               <Input
-                type="email"
+                type="id"
                 value={email}
                 onChange={emailInputHandler}
                 placeholder=" "
                 w="340px"
                 h="56px"
               />
+              <FormLabel>이메일</FormLabel>
               <FormErrorMessage>올바른 이메일을 입력해주세요.</FormErrorMessage>
             </FormControl>
           </Center>
           <Center mt="16px">
             <FormControl variant="floating" id="password" isRequired>
-              <FormLabel>비밀번호</FormLabel>
               <Input
                 type="password"
                 value={password}
@@ -83,18 +103,21 @@ const LoginPage = () => {
                 w="340px"
                 h="56px"
               />
+              <FormLabel>비밀번호</FormLabel>
               <FormErrorMessage>
                 올바른 비밀번호를 입력 해주세요.
               </FormErrorMessage>
             </FormControl>
           </Center>
           <button
-            type="submit"
+            type="button"
+            onClick={onLogin}
             className="mt-[30px] bg-red hover:bg-red2 text-white font-main text-[20px] font-bold w-[340px] h-[56px] rounded-md"
           >
             로그인
           </button>
         </form>
+        {error && <p>{error}</p>}
       </div>
     </ChakraProvider>
   );
