@@ -81,13 +81,15 @@ def set_bookmark():
     data = request.json
     uid = data.get('uid')
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
-    docs = doc_ref.stream()
+    docs = doc_ref.where(u'link', u'==', data.get('link')).stream()
     for doc in docs:
-        if doc.to_dict()['link'] == data.get('link'):
-            print('a')
-            print(doc.to_dict())
-            print(doc)
-#            doc['bookmark'].set(data.get('bookmark'))
+        print(f'{doc.id} => {doc.to_dict()}')
+        doc_ref.document(doc.id).set({
+            u'bookmark':data.get('bookmark'),
+            u'company':doc.to_dict()['company'],
+            u'link':doc.to_dict()['link'],
+            u'title':doc.to_dict()['title']
+        })
     response = make_response(jsonify({'status': 'good'}))
     return response
 
