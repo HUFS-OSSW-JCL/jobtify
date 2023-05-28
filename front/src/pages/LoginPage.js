@@ -52,25 +52,82 @@ const theme = extendTheme({
 const LoginPage = () => {
   const { login } = useContext(AuthContext);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const emailInputHandler = (e) => setEmail(e.target.value);
-  const pwInputHandler = (e) => setPassword(e.target.value);
+  const [loginForm, setLoginForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const emailInputHandler = (e) => {
+    setLoginForm((prevState) => {
+      return { ...prevState, email: e.target.value };
+    });
+    setEmailError(false);
+  };
+
+  const pwInputHandler = (e) => {
+    setLoginForm((prevState) => {
+      return { ...prevState, password: e.target.value };
+    });
+    setPwError(false);
+  };
 
   const auth = getAuth();
   const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [pwError, setPwError] = useState(false);
+  const [emailErrorMsg, setEmailErrorMsg] = useState("");
+  const [pwErrorMsg, setPwErrorMsg] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const onLogin = async () => {
+    if (loginForm.email.length === 0) {
+      setEmailError(true);
+      setEmailErrorMsg("이메일을 입력해주세요");
+      return;
+    } else {
+      setEmailError(false);
+    }
+    if (!loginForm.email.includes("@")) {
+      setEmailError(true);
+      setEmailErrorMsg("올바른 이메일을 입력해주세요");
+      return;
+    } else {
+      setEmailError(false);
+    }
+    if (loginForm.password.length < 6) {
+      setPwError(true);
+      setPwErrorMsg("비밀번호를 여섯자리 이상 입력해주세요");
+      return;
+    } else {
+      setPwError(false);
+    }
+
     try {
-      await signInWithEmailAndPassword(auth, email, password).then((user) => {
+      await signInWithEmailAndPassword(
+        auth,
+        loginForm.email,
+        loginForm.password
+      ).then((user) => {
         // console.log(user);
         navigate(`/`);
         login();
       });
     } catch (e) {
-      console.log(e);
-      setError(e.message);
+      console.log(e.code);
+      setLoginError(e.code);
+
+      if (loginError === "auth/invalid-email") {
+        setEmailError(true);
+        setEmailErrorMsg("이메일을 확인해주세요");
+      }
+      if (loginError === "auth/wrong-password") {
+        setPwError(true);
+        setPwErrorMsg("비밀번호가 일치하지 않습니다");
+      }
+      if (loginError === "auth/user-not-found") {
+        setEmailError(true);
+        setEmailErrorMsg("이메일을 확인해주세요");
+      }
     }
   };
 
@@ -80,33 +137,33 @@ const LoginPage = () => {
         <h1 className="font-main font-bold text-[44px] mt-[147px]">Jobtify</h1>
         <form>
           <Center mt="65px">
-            <FormControl variant="floating" id="email">
+            <FormControl variant="floating" id="email" isInvalid={emailError}>
               <Input
                 type="id"
-                value={email}
+                value={loginForm.email}
                 onChange={emailInputHandler}
                 placeholder=" "
                 w="340px"
                 h="56px"
               />
               <FormLabel>이메일</FormLabel>
-              <FormErrorMessage>올바른 이메일을 입력해주세요.</FormErrorMessage>
+              {emailError && (
+                <FormErrorMessage>{emailErrorMsg}</FormErrorMessage>
+              )}
             </FormControl>
           </Center>
           <Center mt="16px">
-            <FormControl variant="floating" id="password" isRequired>
+            <FormControl variant="floating" id="password" isInvalid={pwError}>
               <Input
                 type="password"
-                value={password}
+                value={loginForm.password}
                 onChange={pwInputHandler}
                 placeholder=" "
                 w="340px"
                 h="56px"
               />
               <FormLabel>비밀번호</FormLabel>
-              <FormErrorMessage>
-                올바른 비밀번호를 입력 해주세요.
-              </FormErrorMessage>
+              {pwError && <FormErrorMessage>{pwErrorMsg}</FormErrorMessage>}
             </FormControl>
           </Center>
           <button
@@ -117,7 +174,7 @@ const LoginPage = () => {
             로그인
           </button>
         </form>
-        {error && <p>{error}</p>}
+        {loginError && <p>{loginError}</p>}
       </div>
     </ChakraProvider>
   );
