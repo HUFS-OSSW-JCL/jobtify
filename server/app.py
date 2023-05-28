@@ -60,6 +60,7 @@ def register_user():
         u'country': country,
         u'sites': sites
     })
+    print(response)
     return response
 
 @app.route('/get_bookmarks', methods=['POST'])
@@ -74,6 +75,7 @@ def get_bookmarks():
             print("It's true!")
             bookmarks.append(doc.to_dict())
     response = make_response(jsonify(bookmarks))
+    print(response)
     return response
  
 @app.route('/set_bookmark', methods=['POST'])
@@ -91,6 +93,7 @@ def set_bookmark():
             u'title':doc.to_dict()['title']
         })
     response = make_response(jsonify({'status': 'good'}))
+    print(response)
     return response
 
 if __name__ == '__main__':
