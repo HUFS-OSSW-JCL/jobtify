@@ -3,8 +3,8 @@ import Keyword from "./Keyword";
 // import Modal from "../../components/Modal";
 import Chip from "../../components/Chip";
 import Location from "../../components/Location";
-import jobkorea from "../../assets/jobkorea.jpeg";
-import saramin from "../../assets/saramin.png";
+import incruit from "../../assets/incruit.png";
+import rallit from "../../assets/rallit.png";
 import wanted from "../../assets/wanted.jpg";
 import jumpit from "../../assets/jumpit.png";
 // import { useState } from "react";
@@ -68,11 +68,11 @@ const AddFilter = () => {
           정보를 가져올 사이트
         </label>
         <div className="flex flex-row">
-          <div className="flex-1">
-            <Chip name="잡코리아" pic={jobkorea} />
-            <Chip name="사람인" pic={saramin} />
+          <div>
+            <Chip name="인크루트" pic={incruit} />
+            <Chip name="랠릿" pic={rallit} />
           </div>
-          <div className="flex-1">
+          <div>
             <Chip name="원티드" pic={wanted} />
             <Chip name="점핏" pic={jumpit} />
           </div>
