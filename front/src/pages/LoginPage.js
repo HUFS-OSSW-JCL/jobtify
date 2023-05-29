@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../util/AuthContext";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Helmet } from "react-helmet";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-31px)",
@@ -140,6 +141,9 @@ const LoginPage = () => {
 
   return (
     <ChakraProvider theme={theme}>
+      <Helmet>
+        <meta name="theme-color" content="#FFFFFF" />
+      </Helmet>
       <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-center">
         <h1 className="font-main font-bold text-[44px] mt-[147px]">Jobtify</h1>
         <form>
