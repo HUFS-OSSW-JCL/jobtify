@@ -61,6 +61,7 @@ const LoginPage = () => {
     if (localStorage.getItem("LOGGED_IN")) {
       navigate("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const emailInputHandler = (e) => {
