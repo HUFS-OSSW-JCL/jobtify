@@ -67,6 +67,7 @@ def register_user():
 def get_bookmarks():
     bookmarks=[]
     data = request.json
+    print(data)
     uid = data.get('uid')
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     docs = doc_ref.stream()
@@ -81,6 +82,7 @@ def get_bookmarks():
 @app.route('/set_bookmark', methods=['POST'])
 def set_bookmark():
     data = request.json
+    print(data)
     uid = data.get('uid')
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     docs = doc_ref.where(u'link', u'==', data.get('link')).stream()
