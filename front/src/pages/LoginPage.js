@@ -7,7 +7,7 @@ import {
   extendTheme,
   Center,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../util/AuthContext";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -56,6 +56,12 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("LOGGED_IN")) {
+      navigate("/");
+    }
+  }, []);
 
   const emailInputHandler = (e) => {
     setLoginForm((prevState) => {
