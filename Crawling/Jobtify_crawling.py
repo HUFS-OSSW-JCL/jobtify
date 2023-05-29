@@ -28,5 +28,5 @@ if __name__ == "__main__":
     # for t in threads:
     #     t.join()
 
-    a = wanted.SearchJob("PM")
+    a = Rallit.SearchJob("PM")
     print(a)

@@ -13,6 +13,9 @@ def SearchJob(keyword):
     job_list = wanted.GetJobInfo("#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw > div:nth-child(3) > div.SearchJobListOuter_jobListContainer__1TqHZ > div > div:nth-child(1)", "div")
     job_dict = wanted.ReturnList(job_list, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ"," ", "a")
 
-    wanted.GetJobInfo("#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw > div:nth-child(3) > div > div:nth-child(2) > div:nth-child(1)", "div")
-    job_list = wanted.ReturnList("a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ"," ", "a")
+
+    wanted.Scroll()
+
+    job_lists = wanted.GetJobInfo("#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw > div:nth-child(3) > div.SearchJobListOuter_jobListContainer__1TqHZ > div > div:nth-child(1)", "div")
+    job_list = wanted.ReturnList(job_lists, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ"," ", "a")
     return job_list

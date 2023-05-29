@@ -18,21 +18,21 @@ class Crawler:
         self.ua = UserAgent()
         # self.ua.random
         # self.options.add_argument(f'user-agent = {self.ua}')
-        self.options.add_argument("window-size=1920,1080")
-        self.options.add_argument("--headless")
+        #self.options.add_argument("window-size=1920,1080")
+        #self.options.add_argument("--headless")
         # self.options.add_argument('--no-sandbox')
         # self.options.add_argument('--ignore-certificate-errors')
         # self.options.add_argument('--allow-running-insecure-content')
         # self.options.add_argument('--disable-dev-shm-usage')
         # self.options.add_argument("'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'")
-        self.driver = webdriver.Chrome(chrome_options=self.options)
+        self.driver = webdriver.Chrome()
 
     """
     처음에 클래스를 만들 때 인자로 받은 url을 여는 함수
     """
 
     def OpenSite(self):
-        # self.driver.maximize_window()
+        self.driver.maximize_window()
         self.driver.get(self.url)
         time.sleep(1)
 
@@ -61,7 +61,8 @@ class Crawler:
     GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
     """
 
-    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_during_selector, job_link_selector):
+    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_during_selector,
+                   job_link_selector):
         for jobs in job_lists:
             job_dict = {}
             try:
@@ -86,9 +87,20 @@ class Crawler:
 
         return self.job_list
 
-    def scroll_down(self, body):
-        self.driver.find_element(By.CSS_SELECTOR, body).send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
+
+    """
+    스크롤을 내리고 기다리는 함수
+    """
+    def Scroll(self):
+        last_height = self.driver.execute_script("return document.body.scrollHeight")
+        while True:
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(1)
+            new_height = self.driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                break
+            last_height = new_height
+
 
     def click(self, css):
         self.driver.find_element(By.CSS_SELECTOR, css).click()
