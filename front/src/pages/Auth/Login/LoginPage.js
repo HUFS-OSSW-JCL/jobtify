@@ -8,8 +8,8 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../util/AuthContext";
+import { useNavigate, Link } from "react-router-dom";
+import AuthContext from "../../../util/AuthContext";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Helmet } from "react-helmet";
 
@@ -53,7 +53,7 @@ const theme = extendTheme({
 const LoginPage = () => {
   const { login } = useContext(AuthContext);
 
-  const [loginForm, setLoginForm] = useState({
+  const [signUpForm, setsignUpForm] = useState({
     email: "",
     password: "",
   });
@@ -66,14 +66,14 @@ const LoginPage = () => {
   }, []);
 
   const emailInputHandler = (e) => {
-    setLoginForm((prevState) => {
+    setsignUpForm((prevState) => {
       return { ...prevState, email: e.target.value };
     });
     setEmailError(false);
   };
 
   const pwInputHandler = (e) => {
-    setLoginForm((prevState) => {
+    setsignUpForm((prevState) => {
       return { ...prevState, password: e.target.value };
     });
     setPwError(false);
@@ -85,24 +85,24 @@ const LoginPage = () => {
   const [pwError, setPwError] = useState(false);
   const [emailErrorMsg, setEmailErrorMsg] = useState("");
   const [pwErrorMsg, setPwErrorMsg] = useState("");
-  const [loginError, setLoginError] = useState("");
+  const [signUpError, setsignUpError] = useState("");
 
   const onLogin = async () => {
-    if (loginForm.email.length === 0) {
+    if (signUpForm.email.length === 0) {
       setEmailError(true);
       setEmailErrorMsg("이메일을 입력해주세요");
       return;
     } else {
       setEmailError(false);
     }
-    if (!loginForm.email.includes("@")) {
+    if (!signUpForm.email.includes("@")) {
       setEmailError(true);
       setEmailErrorMsg("올바른 이메일을 입력해주세요");
       return;
     } else {
       setEmailError(false);
     }
-    if (loginForm.password.length < 6) {
+    if (signUpForm.password.length < 6) {
       setPwError(true);
       setPwErrorMsg("비밀번호를 여섯자리 이상 입력해주세요");
       return;
@@ -113,8 +113,8 @@ const LoginPage = () => {
     try {
       await signInWithEmailAndPassword(
         auth,
-        loginForm.email,
-        loginForm.password
+        signUpForm.email,
+        signUpForm.password
       ).then((user) => {
         // console.log(user);
         navigate(`/`);
@@ -122,17 +122,17 @@ const LoginPage = () => {
       });
     } catch (e) {
       console.log(e.code);
-      setLoginError(e.code);
-
-      if (loginError === "auth/invalid-email") {
+      setsignUpError(e.code);
+    } finally {
+      if (signUpError === "auth/invalid-email") {
         setEmailError(true);
         setEmailErrorMsg("이메일을 확인해주세요");
       }
-      if (loginError === "auth/wrong-password") {
+      if (signUpError === "auth/wrong-password") {
         setPwError(true);
         setPwErrorMsg("비밀번호가 일치하지 않습니다");
       }
-      if (loginError === "auth/user-not-found") {
+      if (signUpError === "auth/user-not-found") {
         setEmailError(true);
         setEmailErrorMsg("이메일을 확인해주세요");
       }
@@ -147,11 +147,11 @@ const LoginPage = () => {
       <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-center">
         <h1 className="font-main font-bold text-[44px] mt-[147px]">Jobtify</h1>
         <form>
-          <Center mt="65px">
+          <Center mt="60px">
             <FormControl variant="floating" id="email" isInvalid={emailError}>
               <Input
                 type="id"
-                value={loginForm.email}
+                value={signUpForm.email}
                 onChange={emailInputHandler}
                 placeholder=" "
                 w="340px"
@@ -167,7 +167,7 @@ const LoginPage = () => {
             <FormControl variant="floating" id="password" isInvalid={pwError}>
               <Input
                 type="password"
-                value={loginForm.password}
+                value={signUpForm.password}
                 onChange={pwInputHandler}
                 placeholder=" "
                 w="340px"
@@ -185,7 +185,17 @@ const LoginPage = () => {
             로그인
           </button>
         </form>
-        {loginError && <p>{loginError}</p>}
+        {/* {signUpError && <p>{signUpError}</p>} */}
+        <div className="flex flex-row mt-[30px]">
+          <p className="font-main text-[16px] text-gray-500">
+            계정이 없으신가요?
+          </p>
+          <Link to="/signup">
+            <p className="ml-[5px] font-main text-[16px] text-red font-bold">
+              회원가입하기
+            </p>
+          </Link>
+        </div>
       </div>
     </ChakraProvider>
   );
