@@ -7,19 +7,17 @@ import incruit from "../../assets/incruit.png";
 import rallit from "../../assets/rallit.png";
 import wanted from "../../assets/wanted.jpg";
 import jumpit from "../../assets/jumpit.png";
-// import { useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddFilter = () => {
-  // const [location, setLocation] = useState("선택하기");
-  // const onSetLocation = (x) => {
-  //   setLocation(x);
-  // };
-
-  // const [openModal, setOpenModal] = useState(false);
-  // const onModalAlert = () => {
-  //   setOpenModal(!openModal);
-  // };
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("LOGGED_IN")) {
+      navigate("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="container max-w-[395px] mx-auto flex flex-col items-center justify-start">
       <Helmet>

@@ -2,12 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import { useState } from "react";
 import AuthContext from "./util/AuthContext";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/Auth/Login/LoginPage";
 import MainPage from "./pages/MainPage/MainPage";
 import AddFilter from "./pages/AddFilter/AddFilter";
 import ScrollTop from "./components/ScrollTop";
 import NotFound from "./pages/NotFound";
 import Swal from "sweetalert2";
+import SignUpPage from "./pages/Auth/SignUp/SignUpPage";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Routes>
             <Route path="*" element={<NotFound />} />
             <Route exact path="/login" element={<LoginPage />} />
+            <Route exact path="/signup" element={<SignUpPage />} />
             <Route path="/" element={<MainPage />} />
             <Route path="/add" element={<AddFilter />} />
           </Routes>
