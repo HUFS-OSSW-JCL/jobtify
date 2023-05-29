@@ -1,6 +1,7 @@
 import Header from "./Header";
 import NoticeList from "./NoticeList/NoticeList";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const MainPage = () => {
   const [isAvailable, setIsAvailable] = useState(false);
