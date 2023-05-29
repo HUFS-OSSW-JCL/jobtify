@@ -1,13 +1,20 @@
 import { GrAddCircle } from "react-icons/gr";
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import HeaderDropdown from "./HeaderDropdown";
+import { modalState } from "../../util/atom";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 
 const Header = () => {
-  const [view, setView] = useState(false);
+  const openState = modalState;
+  const { isOpen } = useRecoilValue(openState);
+  const setIsOpen = useSetRecoilState(openState);
+
   const onViewAlert = () => {
-    setView(!view);
+    setIsOpen((prev) => {
+      return { ...prev, isOpen: true, animate: true };
+    });
   };
 
   return (
@@ -33,7 +40,7 @@ const Header = () => {
         </button>
       </div>
 
-      {view && <HeaderDropdown onViewAlert={onViewAlert} view={view} />}
+      {isOpen && <HeaderDropdown onViewAlert={onViewAlert} view={isOpen} />}
     </div>
   );
 };

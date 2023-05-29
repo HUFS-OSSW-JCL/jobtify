@@ -40,7 +40,7 @@ module.exports = {
           },
           to: {
             opacity: "0",
-            transform: "translateY(10px)",
+            transform: "translateY(-10px)",
           },
         },
       },
