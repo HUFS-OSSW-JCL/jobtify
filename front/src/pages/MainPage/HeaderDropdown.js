@@ -3,8 +3,24 @@ import ModalPortal from "../../components/ModalPortal";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../util/AuthContext";
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import { modalState } from "../../util/atom";
 
 const HeaderDropdown = (props) => {
+  const { animate } = useRecoilValue(modalState);
+  const setIsOpen = useSetRecoilState(modalState);
+
+  const onClose = () => {
+    setIsOpen((prev) => {
+      return { ...prev, animate: false };
+    });
+    setTimeout(() => {
+      setIsOpen((prev) => {
+        return { ...prev, isOpen: false };
+      });
+    }, 500);
+  };
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { logout } = useContext(AuthContext);
 
@@ -15,14 +31,17 @@ const HeaderDropdown = (props) => {
       document.body.style.overflow = "auto";
     };
   }, []);
+
   return (
     <ModalPortal>
       <div
         className="fixed top-[64px] left-[124px] flex items-start justify-center w-full h-screen"
-        onClick={props.onViewAlert}
+        onClick={onClose}
       >
         <div
-          className={`animate-fade-in-down w-[100px] h-[70px] font-main font-bold rounded-xl border text-end shadow-md bg-white flex flex-col list-none items-end justify-center`}
+          className={`${
+            animate ? "animate-fade-in-down" : "animate-fade-out-down"
+          } w-[100px] h-[70px] font-main font-bold rounded-xl border text-end shadow-md bg-white flex flex-col list-none items-end justify-center`}
         >
           {isLoggedIn ? (
             <ul className="mr-[11px]">

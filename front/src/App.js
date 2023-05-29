@@ -9,6 +9,7 @@ import ScrollTop from "./components/ScrollTop";
 import NotFound from "./pages/NotFound";
 import Swal from "sweetalert2";
 import SignUpPage from "./pages/Auth/SignUp/SignUpPage";
+import { RecoilRoot } from "recoil";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,20 +43,22 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
-      <ChakraProvider>
-        <Router>
-          <ScrollTop />
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route exact path="/login" element={<LoginPage />} />
-            <Route exact path="/signup" element={<SignUpPage />} />
-            <Route path="/" element={<MainPage />} />
-            <Route path="/add" element={<AddFilter />} />
-          </Routes>
-        </Router>
-      </ChakraProvider>
-    </AuthContext.Provider>
+    <RecoilRoot>
+      <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+        <ChakraProvider>
+          <Router>
+            <ScrollTop />
+            <Routes>
+              <Route path="*" element={<NotFound />} />
+              <Route exact path="/login" element={<LoginPage />} />
+              <Route exact path="/signup" element={<SignUpPage />} />
+              <Route path="/" element={<MainPage />} />
+              <Route path="/add" element={<AddFilter />} />
+            </Routes>
+          </Router>
+        </ChakraProvider>
+      </AuthContext.Provider>
+    </RecoilRoot>
   );
 }
 
