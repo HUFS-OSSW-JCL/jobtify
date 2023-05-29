@@ -18,7 +18,7 @@ const HeaderDropdown = (props) => {
   return (
     <ModalPortal>
       <div
-        className="absolute left-[798px] w-full top-[70px]"
+        className="fixed top-[64px] left-[124px] flex items-start justify-center w-full h-screen"
         onClick={props.onViewAlert}
       >
         <div

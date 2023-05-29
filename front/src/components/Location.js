@@ -171,6 +171,7 @@ const deselectedOptions = [
 const Location = () => {
   const [hasText, setHasText] = useState(false); // input값 유무
   const [inputValue, setInputValue] = useState(""); // input값 상태
+  // eslint-disable-next-line no-unused-vars
   const [options, setOptions] = useState(deselectedOptions); // input값을 포함하는 autocomplete 추천 리스트 확인
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage/MainPage";
 import AddFilter from "./pages/AddFilter/AddFilter";
 import ScrollTop from "./components/ScrollTop";
 import NotFound from "./pages/NotFound";
+import Swal from "sweetalert2";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,6 +20,24 @@ function App() {
   const logout = () => {
     localStorage.removeItem("LOGGED_IN");
     setIsLoggedIn(false);
+    let timerInterval;
+    Swal.fire({
+      title: "로그아웃",
+      html: "정상적으로 로그아웃 되었습니다.",
+      timer: 1500,
+      timerProgressBar: true,
+      width: "395px",
+      showConfirmButton: false,
+      position: "center-start",
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
   };
 
   return (
