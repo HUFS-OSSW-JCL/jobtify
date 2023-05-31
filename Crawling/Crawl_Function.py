@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from fake_useragent import UserAgent
 import time
 
 
@@ -10,21 +9,10 @@ class Crawler:
     """
     기본적인 크롬웹드라이버 설정
     """
-
     def __init__(self, url):
         self.job_list = []
         self.options = Options()
         self.url = url
-        self.ua = UserAgent()
-        # self.ua.random
-        # self.options.add_argument(f'user-agent = {self.ua}')
-        #self.options.add_argument("window-size=1920,1080")
-        #self.options.add_argument("--headless")
-        # self.options.add_argument('--no-sandbox')
-        # self.options.add_argument('--ignore-certificate-errors')
-        # self.options.add_argument('--allow-running-insecure-content')
-        # self.options.add_argument('--disable-dev-shm-usage')
-        # self.options.add_argument("'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36'")
         self.driver = webdriver.Chrome()
 
     """
@@ -69,10 +57,6 @@ class Crawler:
                 job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
                 job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
                 job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
-                # if job_during == None:
-                #     job_link.click()
-                #     time.sleep(3)
-                #     job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
                 job_dict['공고명'] = job_title.text
                 job_dict['회사명'] = job_company.text
                 job_dict['링크'] = job_link
@@ -87,21 +71,41 @@ class Crawler:
 
         return self.job_list
 
+    def Area_Filter(self, area_keyword, area_XPATH, area_CSS_SELECTOR, BUTTON):
+        area_element = self.driver.find_element(By.XPATH, area_XPATH)
+        area_elements = area_element.find_elements(By.CSS_SELECTOR, area_CSS_SELECTOR)
+        for area in area_elements:
+            if area.text in area_keyword:
+                area.click()
+        time.sleep(1)
+        try:
+            self.driver.find_element(By.XPATH, BUTTON).click()
+            time.sleep(1)
+        except Exception:
+            pass
+
+
+
 
     """
-    스크롤을 내리고 기다리는 함수
+    스크롤을 끝까지 내리는 함수
     """
     def Scroll(self):
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         while True:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(1)
+            time.sleep(2)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 break
             last_height = new_height
 
-
-    def click(self, css):
+    """
+    단순하게 입력받은 css selector를 클릭하고 0.5초 기다리는 함수
+    """
+    def Click_By_CSS_SELECTOR(self, css):
         self.driver.find_element(By.CSS_SELECTOR, css).click()
+        time.sleep(0.5)
+    def Click_By_XPATH(self, XPATH):
+        self.driver.find_element(By.XPATH, XPATH).click()
         time.sleep(0.5)
