@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import firebase from "./util/Firebase";
+import "firebase/auth";
 import "./styles/tailwind.css";
 import "./styles/styles.css";
 
