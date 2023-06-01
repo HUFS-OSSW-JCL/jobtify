@@ -1,14 +1,14 @@
 from selenium import webdriver
 import Crawl_Function
 from selenium.webdriver.common.by import By
-from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
 import time
 
-def SearchJob(keyword):
+def SearchJob(keyword, area_list):
     incruit = Crawl_Function.Crawler("https://job.incruit.com/jobdb_list/searchjob.asp?ct=3&ty=1&cd=149")
     incruit.OpenSite()
 
-    incruit.Area_Filter("서울", "//*[@id=\"rgn2_ul_149\"]", "li", " ")
+    incruit.Area_Filter(area_list, "//*[@id=\"rgn2_ul_149\"]", "li", " ")
 
     #연차검색
     incruit.Click_By_CSS_SELECTOR("#dropFirstList3")
@@ -18,6 +18,8 @@ def SearchJob(keyword):
 
     #세부 검색
     incruit.Search(keyword, "//*[@id=\"txtSearchKw\"]", "//*[@id=\"txtSearchKw\"]")
+    incruit.driver.find_element(By.XPATH, "//*[@id=\"txtSearchKw\"]").send_keys(Keys.ARROW_LEFT)
+    incruit.driver.find_element(By.XPATH, "//*[@id=\"txtSearchKw\"]").send_keys(Keys.ARROW_RIGHT)
     time.sleep(2)
 
 

@@ -13,6 +13,7 @@ class Crawler:
         self.job_list = []
         self.options = Options()
         self.url = url
+        self.options.add_argument("--start-maximized")
         self.driver = webdriver.Chrome()
 
     """
@@ -51,33 +52,36 @@ class Crawler:
 
     def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_during_selector,
                    job_link_selector):
-        for jobs in job_lists:
-            job_dict = {}
-            try:
-                job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
-                job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
-                job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
-                job_dict['공고명'] = job_title.text
-                job_dict['회사명'] = job_company.text
-                job_dict['링크'] = job_link
+        try:
+            for jobs in job_lists:
+                job_dict = {}
                 try:
-                    job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
-                    job_dict['모집기간'] = job_during.text
+                    job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
+                    job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
+                    job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
+                    job_dict['공고명'] = job_title.text
+                    job_dict['회사명'] = job_company.text
+                    job_dict['링크'] = job_link
+                    try:
+                        job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
+                        job_dict['모집기간'] = job_during.text
+                    except Exception as e:
+                        pass
+                    self.job_list.append(job_dict)
                 except Exception as e:
                     pass
-                self.job_list.append(job_dict)
-            except Exception as e:
-                pass
-
+        except Exception:
+            return
         return self.job_list
 
-    def Area_Filter(self, area_keyword, area_XPATH, area_CSS_SELECTOR, BUTTON):
+    def Area_Filter(self, area_keyword_list, area_XPATH, area_CSS_SELECTOR, BUTTON):
         area_element = self.driver.find_element(By.XPATH, area_XPATH)
         area_elements = area_element.find_elements(By.CSS_SELECTOR, area_CSS_SELECTOR)
-        for area in area_elements:
-            if area.text in area_keyword:
-                area.click()
-        time.sleep(1)
+        for area_keyword in area_keyword_list:
+            for area in area_elements:
+                if area.text in area_keyword:
+                    area.click()
+            time.sleep(1)
         try:
             self.driver.find_element(By.XPATH, BUTTON).click()
             time.sleep(1)
@@ -94,7 +98,7 @@ class Crawler:
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         while True:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2)
+            time.sleep(2.5)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 break
@@ -108,4 +112,7 @@ class Crawler:
         time.sleep(0.5)
     def Click_By_XPATH(self, XPATH):
         self.driver.find_element(By.XPATH, XPATH).click()
+        time.sleep(0.5)
+    def Click_By_CLASS_NAME(self, classname):
+        self.driver.find_element(By.CLASS_NAME, classname).click()
         time.sleep(0.5)
