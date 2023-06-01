@@ -7,3 +7,10 @@ export const modalState = atom({
     animate: false,
   },
 });
+
+export const saveState = atom({
+  key: "saveState",
+  default: {
+    isSaved: false,
+  },
+});

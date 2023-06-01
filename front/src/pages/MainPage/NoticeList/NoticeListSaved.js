@@ -4,7 +4,7 @@ const NoticeListSaved = (props) => {
   return (
     <div className="w-[346px] flex flex-col justify-center items-start mb-[30px]">
       {localStorage.getItem("LOGGED_IN") ? (
-        props.isAvailable ? (
+        props.isSaved ? (
           <div className="mt-[10px] container w-[346px] min-h-[230px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
             <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
               저장된 채용공고

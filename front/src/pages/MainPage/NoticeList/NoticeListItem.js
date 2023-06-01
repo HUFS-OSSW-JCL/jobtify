@@ -3,8 +3,11 @@ import jumpit from "../../../assets/jumpit.png";
 import wanted from "../../../assets/wanted.jpg";
 import rallit from "../../../assets/rallit.png";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NoticeListItem = (props) => {
+  const navigate = useNavigate();
+
   const [badge, setBadge] = useState(null);
 
   useEffect(() => {
@@ -20,8 +23,15 @@ const NoticeListItem = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onClickListener = () => {
+    navigate("/ShowInfo");
+  };
+
   return (
-    <div className="w-[296px] h-[70px] mb-[5px] bg-white flex flex-row justify-start items-center">
+    <div
+      onClick={onClickListener}
+      className="w-[296px] h-[70px] mb-[5px] bg-white flex flex-row justify-start items-center"
+    >
       <div
         key={props.key}
         className="w-[296px] h-[65px] bg-white flex flex-row justify-start items-center"

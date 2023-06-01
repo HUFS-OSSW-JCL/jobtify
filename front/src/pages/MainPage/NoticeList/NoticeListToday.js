@@ -7,7 +7,7 @@ const NoticeListToday = (props) => {
         props.isAvailable ? (
           <div className="mt-[5px] container w-[346px] min-h-[230px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
             <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
-              저장된 채용공고
+              오늘의 채용공고
             </h1>
             <NoticeListItem badge="incruit" />
             <NoticeListItem badge="wanted" />
@@ -16,7 +16,7 @@ const NoticeListToday = (props) => {
         ) : (
           <div className="mt-[5px] container w-[346px] min-h-[290px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
             <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
-              저장된 채용공고
+              오늘의 채용공고
             </h1>
             <div className="w-[300px] mt-[55px] flex flex-col justify-center items-center">
               <p className="text-center font-main font-bold text-[20px]">
