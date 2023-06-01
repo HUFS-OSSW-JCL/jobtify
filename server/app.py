@@ -77,7 +77,7 @@ def get_jds():
     response = make_response(jsonify(jds))
     print(response)
     return response
- 
+
 @app.route('/set_bookmark', methods=['POST'])
 def set_bookmark():
     data = request.json
@@ -91,7 +91,8 @@ def set_bookmark():
             u'bookmark':data.get('bookmark'),
             u'company':doc.to_dict()['company'],
             u'link':doc.to_dict()['link'],
-            u'title':doc.to_dict()['title']
+            u'title':doc.to_dict()['title'],
+            u'site':doc.to_dict()['site']
         })
     response = make_response(jsonify({'status': 'good'}))
     print(response)
