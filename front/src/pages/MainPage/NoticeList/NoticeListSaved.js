@@ -32,11 +32,11 @@ const NoticeListSaved = (props) => {
           </div>
         )
       ) : (
-        <div className="mt-[10px] container w-[346px] min-h-[540px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+        <div className="mt-[10px] container w-[346px] min-h-[290px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
           <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
             저장된 채용공고
           </h1>
-          <div className="w-[300px] mt-[175px] flex flex-col justify-center items-center">
+          <div className="w-[300px] mt-[55px] flex flex-col justify-center items-center">
             <p className="text-center font-main font-bold text-[20px]">
               로그인이 필요합니다
             </p>

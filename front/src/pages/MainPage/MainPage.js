@@ -3,7 +3,6 @@ import NoticeListSaved from "./NoticeList/NoticeListSaved";
 import NoticeListToday from "./NoticeList/NoticeListToday";
 import { saveState } from "../../util/atom";
 import { useRecoilState } from "recoil";
-import { useState } from "react";
 import { Helmet } from "react-helmet";
 
 const MainPage = () => {
