@@ -1,5 +1,6 @@
 import Header from "./Header";
-import NoticeList from "./NoticeList/NoticeList";
+import NoticeListSaved from "./NoticeList/NoticeListSaved";
+import NoticeListToday from "./NoticeList/NoticeListToday";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 
@@ -17,7 +18,8 @@ const MainPage = () => {
       <Header />
       <div className="pt-[66px]"></div>
       <button onClick={changeState}>changeState</button>
-      <NoticeList isAvailable={isAvailable} />
+      <NoticeListSaved isAvailable={isAvailable} />
+      <NoticeListToday isAvailable={isAvailable} />
       {/* <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div> */}
     </div>
   );

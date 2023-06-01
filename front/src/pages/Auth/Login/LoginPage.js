@@ -144,7 +144,7 @@ const LoginPage = () => {
       <Helmet>
         <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
-      <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-center">
+      <div className="container min-w-[395px] mx-auto flex flex-col items-center justify-center">
         <h1 className="font-main font-bold text-[44px] mt-[147px]">로그인</h1>
         <form>
           <Center mt="60px">

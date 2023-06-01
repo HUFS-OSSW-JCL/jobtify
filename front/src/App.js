@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AuthContext from "./util/AuthContext";
 import LoginPage from "./pages/Auth/Login/LoginPage";
 import MainPage from "./pages/MainPage/MainPage";
@@ -13,6 +13,7 @@ import { RecoilRoot } from "recoil";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {}, [isLoggedIn]);
 
   const login = () => {
     localStorage.setItem("LOGGED_IN", true);
@@ -37,7 +38,7 @@ function App() {
     }).then((result) => {
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
-        console.log("I was closed by the timer");
+        // console.log("I was closed by the timer");
       }
     });
   };

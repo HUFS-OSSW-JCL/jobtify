@@ -51,7 +51,7 @@ const AddFilter = () => {
         </div>
         <div className="flex flex-col">
           <label
-            for="location"
+            htmlFor="location"
             className="mt-[32px] flex items-start font-bold text-gray-700 font-main"
           >
             회사 위치
