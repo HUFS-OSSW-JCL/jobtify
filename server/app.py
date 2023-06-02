@@ -78,6 +78,14 @@ def get_jds():
     print(response)
     return response
 
+@app.route('/set_jds', methods=['POST'])
+def set_jds():
+    data = request.json
+    print(data)
+    response = make_response(jsonify({'status': 'good'}))
+    print(response)
+    return response
+
 @app.route('/set_bookmark', methods=['POST'])
 def set_bookmark():
     data = request.json
