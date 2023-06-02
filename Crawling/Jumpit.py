@@ -2,7 +2,7 @@ import Crawl_Function
 import time
 from selenium.webdriver.common.by import By
 
-def SearchJob(keyword):
+def SearchJob(keyword, area_list):
     jumpit = Crawl_Function.Crawler("https://www.jumpit.co.kr/")
     jumpit.OpenSite()
     """
@@ -10,6 +10,7 @@ def SearchJob(keyword):
     """
     try:
         jumpit.Click_By_CSS_SELECTOR("#modal > div > div > div.sc-ewSTlh.bkQpMn > button:nth-child(2)")
+        time.sleep(1)
     except Exception:
         pass
 
@@ -33,10 +34,12 @@ def SearchJob(keyword):
     area_element = jumpit.driver.find_element(By.XPATH, "//*[@id=\"root\"]/main/div/div/div/div[1]/div[4]/div[1]/div[2]/div/div/div")
     area_elements = area_element.find_elements(By.TAG_NAME, "button")
     time.sleep(1)
+
     try:
-        for area in area_elements:
-            if area.text in "서울 중구":
-                area.click()
+        for area_keyword in area_list:
+            for area in area_elements:
+                if area.text in area_keyword:
+                    area.click()
     except Exception:
         pass
     time.sleep(1)
@@ -47,6 +50,9 @@ def SearchJob(keyword):
     """
     jumpit.Scroll()
 
+    """
+    GetJobInfo, ReturnList함수를 이용해 채용공고들을 긁어옴
+    """
     try:
         job_lists = jumpit.GetJobInfo("#root > main > div > section.sc-gXRojI.lnTxpv > section", "div")
         job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", " ", "a")
