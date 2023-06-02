@@ -5,13 +5,20 @@ import time
 
 
 def SearchJob(keyword, area_list):
-    wanted = Crawl_Function.Crawler("https://www.wanted.co.kr/")
+    wanted = Crawl_Function.Crawler("https://www.wanted.co.kr/jobsfeed/")
     wanted.OpenSite()
     wanted.Search(keyword, "//*[@id=\"__next\"]/div[1]/div/nav/aside/ul/li[1]/button", "//*[@id=\"__next\"]/div[1]/div[2]/div/div[2]/div/form/input")
 
+    """
+    신입~3년까지의 경력을 요구하는 공고를 필터링하는 함수
+    """
+    wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/button")
+
 
     wanted.Click_By_CLASS_NAME("FilterButton_FilterButton__xZxZP.FilterButton_active__BpYRv")
-
+    """
+    입력받은 지역만 검색하기 위한 필터
+    """
     area_element = wanted.driver.find_element(By.XPATH, "//*[@id=\"MODAL_BODY\"]/div[2]/div[1]/ul")
     area_elements = area_element.find_elements(By.CSS_SELECTOR, "li")
     for area_keyword in area_list:

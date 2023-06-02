@@ -11,9 +11,9 @@ class Crawler:
     """
     def __init__(self, url):
         self.job_list = []
-        self.options = Options()
+        #self.options = Options()
         self.url = url
-        self.options.add_argument("--start-maximized")
+       # self.options.add_argument("--start-maximized")
         self.driver = webdriver.Chrome()
 
     """
@@ -74,6 +74,9 @@ class Crawler:
             return
         return self.job_list
 
+    """
+    지역을 입력받아 입력받은 지역만 선택하고 검색하기 위한 필터설정 함수
+    """
     def Area_Filter(self, area_keyword_list, area_XPATH, area_CSS_SELECTOR, BUTTON):
         area_element = self.driver.find_element(By.XPATH, area_XPATH)
         area_elements = area_element.find_elements(By.CSS_SELECTOR, area_CSS_SELECTOR)
@@ -104,9 +107,8 @@ class Crawler:
                 break
             last_height = new_height
 
-    """
-    단순하게 입력받은 css selector를 클릭하고 0.5초 기다리는 함수
-    """
+
+
     def Click_By_CSS_SELECTOR(self, css):
         self.driver.find_element(By.CSS_SELECTOR, css).click()
         time.sleep(0.5)

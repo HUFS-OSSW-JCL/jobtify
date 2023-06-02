@@ -16,11 +16,12 @@ def siteFilter(sitename, keyword, area):
     print(result)
 
 if __name__ == "__main__":
-    sitelist = ["점핏"]
+    sitelist = ["원티드"]
     keys = list(input().split())
     area = ["서울", "부산"]
 
     threads = []
+
     for site in sitelist:
         for key in keys:
             t = threading.Thread(target = siteFilter, args = (site, key, area))
