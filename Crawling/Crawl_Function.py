@@ -11,17 +11,17 @@ class Crawler:
     """
     def __init__(self, url):
         self.job_list = []
-        #self.options = Options()
+        self.options = Options()
         self.url = url
-       # self.options.add_argument("--start-maximized")
-        self.driver = webdriver.Chrome()
+        #self.options.add_argument("--window-size = 1920, 1080")
+        self.driver = webdriver.Chrome(chrome_options=self.options)
 
     """
     처음에 클래스를 만들 때 인자로 받은 url을 여는 함수
     """
 
     def OpenSite(self):
-        self.driver.maximize_window()
+        self.driver.set_window_size(1920, 1080)
         self.driver.get(self.url)
         time.sleep(1)
 
