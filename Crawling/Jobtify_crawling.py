@@ -13,21 +13,21 @@ def siteFilter(sitename, keyword, area):
         result = Jumpit.SearchJob(keyword, area)
     elif sitename == "랠릿":
         result = Rallit.SearchJob(keyword, area)
+    #return result
     print(result)
 
 if __name__ == "__main__":
-    # sitelist = ["원티드"]
-    #keys = list(input().split())
+    sitelist = ["원티드", "랠릿", "점핏", "인크루트"]
+    keys = list(input().split())
     area = ["서울", "부산"]
 
-    # threads = []
+    threads = []
 
-    # for site in sitelist:
-    #     for key in keys:
-    #         t = threading.Thread(target = siteFilter, args = (site, key, area))
-    #         t.start()
-    #         threads.append(t)
+    for site in sitelist:
+        for key in keys:
+            t = threading.Thread(target = siteFilter, args = (site, key, area))
+            t.start()
+            threads.append(t)
 
-    # for t in threads:
-    #     t.join()
-    wanted.SearchJob("서버", area)
+    for t in threads:
+        t.join()
