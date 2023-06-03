@@ -86,6 +86,31 @@ def set_jds():
     print(response)
     return response
 
+@app.route('/get_jd', methods=['POST'])
+def get_jd():
+    data = request.json
+    uid = data.get('uid')
+    link = data.get('link')
+    doc_ref = db.collection(u'users').document(uid).collection(u'jds')
+    jds = doc_ref.where(u'link', u'==', data.get('link')).stream()
+    info_ref = db.collection(u'users').document(uid)
+    info = info_ref.get()
+    for jd in jds:
+        response = make_response(
+            jsonify(
+                {
+                    'bookmark':jd.to_dict()['bookmark'],
+                    'company':jd.to_dict()['company'],
+                    'link':jd.to_dict()['link'],
+                    'title':jd.to_dict()['title'],
+                    'site':jd.to_dict()['site'],
+                    'keywords':info.to_dict()['keywords'],
+                    'country':info.to_dict()['country']
+                }
+            )
+        )
+    return response
+
 @app.route('/set_bookmark', methods=['POST'])
 def set_bookmark():
     data = request.json
