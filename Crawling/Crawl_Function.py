@@ -62,11 +62,6 @@ class Crawler:
                     job_dict['공고명'] = job_title.text
                     job_dict['회사명'] = job_company.text
                     job_dict['링크'] = job_link
-                    try:
-                        job_during = jobs.find_element(By.CSS_SELECTOR, job_during_selector)
-                        job_dict['모집기간'] = job_during.text
-                    except Exception as e:
-                        pass
                     self.job_list.append(job_dict)
                 except Exception as e:
                     pass
