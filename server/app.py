@@ -29,7 +29,6 @@ def jobtify2(fname, keywords):
     print(keywords.split("=="))
     return fname
 
-# user_id / keywords / location / crawl
 @app.route('/json_test', methods=['POST'])
 def handle_json():
     data = request.json
@@ -90,7 +89,6 @@ def set_jds():
 def get_jd():
     data = request.json
     uid = data.get('uid')
-    link = data.get('link')
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     jds = doc_ref.where(u'link', u'==', data.get('link')).stream()
     info_ref = db.collection(u'users').document(uid)
