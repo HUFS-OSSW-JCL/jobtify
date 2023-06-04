@@ -17,7 +17,7 @@ def siteFilter(sitename, keyword, area):
     print(result)
 
 if __name__ == "__main__":
-    sitelist = ["원티드", "랠릿", "점핏", "인크루트"]
+    sitelist = ["원티드"]
     keys = list(input().split())
     area = ["서울", "부산"]
 

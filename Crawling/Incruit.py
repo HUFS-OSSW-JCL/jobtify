@@ -37,7 +37,7 @@ def SearchJob(keyword, area_list):
     try:
         while 1:
             job_lists = incruit.GetJobInfo("#incruit_contents > div > div > div.cBbslist_contenst", "li")
-            job_dict = incruit.ReturnList(job_lists, "div.cell_mid > div.cl_top","div.cell_first > div.cl_top > a","div.cell_last > div.cl_btm > span:nth-child(1)", "div.cell_mid > div.cl_top > a")
+            job_dict = incruit.ReturnList(job_lists, "div.cell_mid > div.cl_top","div.cell_first > div.cl_top > a", "div.cell_mid > div.cl_top > a")
             incruit.Click_By_CSS_SELECTOR("#JobList_Area > div.cPrdlists_wrap.cPrdlists_wrap_respon > p > a.next_n")
             incruit.driver.implicitly_wait(2)
     except Exception:

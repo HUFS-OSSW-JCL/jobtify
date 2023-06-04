@@ -6,24 +6,35 @@ import time
 
 
 def SearchJob(keyword, area_list):
-    wanted = Crawl_Function.Crawler("https://www.wanted.co.kr/jobsfeed/")
+    wanted = Crawl_Function.Crawler("https://www.wanted.co.kr")
     wanted.OpenSite()
     wanted.Search(keyword, "//*[@id=\"__next\"]/div[1]/div/nav/aside/ul/li[1]/button", "//*[@id=\"__next\"]/div[1]/div[2]/div/div[2]/div/form/input")
 
     """
     신입~3년까지의 경력을 요구하는 공고를 필터링하는 함수
     """
-    wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/button")
+    c = wanted.driver.find_element(By.CLASS_NAME, "SearchFilter_FilterButtonList__zbbNL")
+    d = c.find_elements(By.TAG_NAME, "button")
+    d[0].click()
+    time.sleep(0.5)
+    #wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/button")
     slider = wanted.driver.find_element(By.CLASS_NAME, "rc-slider-handle.rc-slider-handle-2")
     ActionChains(wanted.driver).click_and_hold(on_element=slider).perform()
     ActionChains(wanted.driver).move_by_offset(-280, 0).perform()
     ActionChains(wanted.driver).click(on_element=None).perform()
-    wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/section/footer/div/button[2]/span[2]")
+    time.sleep(1)
+    a = wanted.driver.find_element(By.CLASS_NAME, "Footer_Footer__xQYVu")
+    b = a.find_elements(By.TAG_NAME, "button")
+    b[1].click()
+    #wanted.Click_By_CSS_SELECTOR("#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw > div:nth-child(3) > div.SearchFilter_FilterButtonList__zbbNL > div:nth-child(1) > section > footer > div > button.Button_Button__root__V1ie3.Button_Button__text__GCOTx.Button_Button__textPrimary__hcFzK.Button_Button__textSizeSmall__VSAkQ")
+    #wanted.Click_By_CLASS_NAME("Button_Button__interaction__kkYaa")
+    #wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/section/footer/div/button[2]/span[2]")
     time.sleep(1)
     """
     입력받은 지역만 검색하기 위한 필터
     """
-    wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[2]/button")
+    #wanted.Click_By_CLASS_NAME("FilterButton_FilterButton__xZxZP FilterButton_active__BpYRv")
+    d[1].click()
     time.sleep(1)
     area_element = wanted.driver.find_element(By.XPATH, "//*[@id=\"MODAL_BODY\"]/div[2]/div[1]/ul")
     area_elements = area_element.find_elements(By.CSS_SELECTOR, "li")
@@ -38,8 +49,8 @@ def SearchJob(keyword, area_list):
     wanted.Scroll()
     job_list = []
     try:
-        job_lists = wanted.GetJobInfo("#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw > div:nth-child(3) > div.SearchJobListOuter_jobListContainer__1TqHZ > div > div:nth-child(1)", "div")
-        job_list = wanted.ReturnList(job_lists, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ"," ", "a")
+        job_lists = wanted.GetJobInfo("SearchJobListOuter_jobListContainer__1TqHZ", "div")
+        job_list = wanted.ReturnList(job_lists, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ","a")
     except Exception:
         pass
     return job_list

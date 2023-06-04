@@ -42,7 +42,7 @@ class Crawler:
     """
 
     def GetJobInfo(self, contents_css_selector, joblists_css_selector):
-        self.all_contents = self.driver.find_element(By.CSS_SELECTOR, contents_css_selector)
+        self.all_contents = self.driver.find_element(By.CLASS_NAME, contents_css_selector)
         self.all_lists = self.all_contents.find_elements(By.CSS_SELECTOR, joblists_css_selector)
         return self.all_lists
 
@@ -50,8 +50,7 @@ class Crawler:
     GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
     """
 
-    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_during_selector,
-                   job_link_selector):
+    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_link_selector):
         try:
             for jobs in job_lists:
                 job_dict = {}
