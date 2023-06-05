@@ -27,7 +27,7 @@ const Keyword = () => {
   };
 
   return (
-    <div classname="w-[350px] h-auto flex flex-col items-center justify-center overflow-auto">
+    <div className="w-[350px] h-auto flex flex-col items-center justify-center overflow-auto">
       {tags.length !== 0 && (
         <div className="flex flex-wrap items-center w-[350px] mb-[10px] break-all">
           {tags.map((e, i) => (
