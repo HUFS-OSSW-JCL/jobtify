@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5cbe4182-23b4-4980-ae29-c7e3f134be82" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crawling/Crawl_Function.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawling/Crawl_Function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crawling/Incruit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawling/Incruit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crawling/Jobtify_crawling.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawling/Jobtify_crawling.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crawling/Jumpit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawling/Jumpit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Crawling/Rallit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawling/Rallit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Crawling/wanted.py" beforeDir="false" afterPath="$PROJECT_DIR$/Crawling/wanted.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

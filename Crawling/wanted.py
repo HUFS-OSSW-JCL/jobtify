@@ -13,9 +13,9 @@ def SearchJob(keyword, area_list):
     """
     신입~3년까지의 경력을 요구하는 공고를 필터링하는 함수
     """
-    c = wanted.driver.find_element(By.CLASS_NAME, "SearchFilter_FilterButtonList__zbbNL")
-    d = c.find_elements(By.TAG_NAME, "button")
-    d[0].click()
+    FilterButton = wanted.driver.find_element(By.CLASS_NAME, "SearchFilter_FilterButtonList__zbbNL")
+    FilterbuttonList = FilterButton.find_elements(By.TAG_NAME, "button")
+    FilterbuttonList[0].click()
     time.sleep(0.5)
     #wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/button")
     slider = wanted.driver.find_element(By.CLASS_NAME, "rc-slider-handle.rc-slider-handle-2")
@@ -26,15 +26,11 @@ def SearchJob(keyword, area_list):
     a = wanted.driver.find_element(By.CLASS_NAME, "Footer_Footer__xQYVu")
     b = a.find_elements(By.TAG_NAME, "button")
     b[1].click()
-    #wanted.Click_By_CSS_SELECTOR("#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw > div:nth-child(3) > div.SearchFilter_FilterButtonList__zbbNL > div:nth-child(1) > section > footer > div > button.Button_Button__root__V1ie3.Button_Button__text__GCOTx.Button_Button__textPrimary__hcFzK.Button_Button__textSizeSmall__VSAkQ")
-    #wanted.Click_By_CLASS_NAME("Button_Button__interaction__kkYaa")
-    #wanted.Click_By_XPATH("//*[@id=\"__next\"]/div[4]/div/div[2]/div[3]/div[1]/div[1]/section/footer/div/button[2]/span[2]")
     time.sleep(1)
     """
     입력받은 지역만 검색하기 위한 필터
     """
-    #wanted.Click_By_CLASS_NAME("FilterButton_FilterButton__xZxZP FilterButton_active__BpYRv")
-    d[1].click()
+    FilterbuttonList[1].click()
     time.sleep(1)
     area_element = wanted.driver.find_element(By.XPATH, "//*[@id=\"MODAL_BODY\"]/div[2]/div[1]/ul")
     area_elements = area_element.find_elements(By.CSS_SELECTOR, "li")

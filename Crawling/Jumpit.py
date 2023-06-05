@@ -54,7 +54,7 @@ def SearchJob(keyword, area_list):
     GetJobInfo, ReturnList함수를 이용해 채용공고들을 긁어옴
     """
     try:
-        job_lists = jumpit.GetJobInfo("#root > main > div > section.sc-gXRojI.lnTxpv > section", "div")
+        job_lists = jumpit.GetJobInfo("sc-fkJVfC.cVBfrj", "div")
         job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", "a")
     except Exception as e:
         pass
