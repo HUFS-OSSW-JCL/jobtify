@@ -5,20 +5,29 @@ const NoticeListToday = (props) => {
     <div className="w-[346px] flex flex-col justify-center items-start mb-[30px]">
       {localStorage.getItem("LOGGED_IN") ? (
         props.isAvailable ? (
-          <div className="mt-[5px] container w-[346px] min-h-[230px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+          <div className="mt-[5px] container w-[346px] min-h-[150px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
             <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
               오늘의 채용공고
             </h1>
-            <NoticeListItem badge="incruit" />
-            <NoticeListItem badge="wanted" />
-            <NoticeListItem badge="wanted" />
+            <NoticeListItem
+              badge="wanted"
+              company="SK텔레콤"
+              job="Web Front-End Engineer"
+              location="서울특별시"
+            />
+            <NoticeListItem
+              badge="rallit"
+              company="구글코리아"
+              job="강아지 쓰다듬는 사람"
+              location="서울특별시"
+            />
           </div>
         ) : (
-          <div className="mt-[5px] container w-[346px] min-h-[290px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+          <div className="mt-[5px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
             <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
               오늘의 채용공고
             </h1>
-            <div className="w-[300px] mt-[55px] flex flex-col justify-center items-center">
+            <div className="w-[300px] mt-[25px] mb-[40px] flex flex-col justify-center items-center">
               <p className="text-center font-main font-bold text-[20px]">
                 등록된 기업이 없어요
               </p>
@@ -32,11 +41,11 @@ const NoticeListToday = (props) => {
           </div>
         )
       ) : (
-        <div className="mt-[10px] container w-[346px] min-h-[290px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+        <div className="mt-[10px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
           <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
             오늘의 채용공고
           </h1>
-          <div className="w-[300px] mt-[55px] flex flex-col justify-center items-center">
+          <div className="w-[300px] mt-[25px] mb-[40px] flex flex-col justify-center items-center">
             <p className="text-center font-main font-bold text-[20px]">
               로그인이 필요합니다
             </p>
@@ -49,7 +58,6 @@ const NoticeListToday = (props) => {
           </div>
         </div>
       )}
-      {}
     </div>
   );
 };

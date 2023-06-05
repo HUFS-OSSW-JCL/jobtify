@@ -5,38 +5,41 @@ const NoticeListSaved = (props) => {
     <div className="w-[346px] flex flex-col justify-center items-start mb-[30px]">
       {localStorage.getItem("LOGGED_IN") ? (
         props.isSaved ? (
-          <div className="mt-[10px] container w-[346px] min-h-[230px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
-            <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
-              저장된 채용공고
+          <div className="mt-[10px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+            <h1 className="font-main font-bold text-[24px] text-black mr-[216px] mt-[20px] mb-[9px]">
+              즐겨찾기
             </h1>
-            <NoticeListItem badge="incruit" />
-            <NoticeListItem badge="wanted" />
-            <NoticeListItem badge="wanted" />
+            <NoticeListItem
+              badge="wanted"
+              company="SK텔레콤"
+              job="Web Front-End Engineer"
+              location="서울특별시"
+            />
           </div>
         ) : (
-          <div className="mt-[10px] container w-[346px] min-h-[290px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
-            <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
-              저장된 채용공고
+          <div className="mt-[10px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+            <h1 className="font-main font-bold text-[24px] text-black mr-[216px] mt-[20px] mb-[9px]">
+              즐겨찾기
             </h1>
-            <div className="w-[300px] mt-[55px] flex flex-col justify-center items-center">
+            <div className="w-[300px] mt-[25px] mb-[40px] flex flex-col justify-center items-center">
               <p className="text-center font-main font-bold text-[20px]">
                 등록된 기업이 없어요
               </p>
               <p className="mt-[10px] font-main text-fontgray text-center text-[14px]">
-                상단 오른쪽의 추가 버튼을 눌러서
+                공고를 클릭해서 별 모양을 누르고
               </p>
               <p className="font-main text-fontgray text-center text-[14px]">
-                공고를 받고싶은 기업을 추가해주세요
+                즐겨찾기를 등록해보세요
               </p>
             </div>
           </div>
         )
       ) : (
-        <div className="mt-[10px] container w-[346px] min-h-[290px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
-          <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
-            저장된 채용공고
+        <div className="mt-[10px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+          <h1 className="font-main font-bold text-[24px] text-black mr-[216px] mt-[20px] mb-[9px]">
+            즐겨찾기
           </h1>
-          <div className="w-[300px] mt-[55px] flex flex-col justify-center items-center">
+          <div className="w-[300px] mt-[25px] mb-[40px] flex flex-col justify-center items-center">
             <p className="text-center font-main font-bold text-[20px]">
               로그인이 필요합니다
             </p>

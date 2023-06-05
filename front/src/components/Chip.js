@@ -7,7 +7,10 @@ const Chip = (props) => {
   };
 
   return (
-    <div onClick={chipClickHandler} className="mr-[10px]">
+    <div
+      onClick={props.onClickHandler ? chipClickHandler : null}
+      className="mr-[10px]"
+    >
       {isChecked ? (
         <div className="w-max h-[45px] mt-[7px] hover: cursor-pointer border border-checked2 bg-checked flex flex-row justify-center items-center rounded-3xl transition-colors duration-300">
           <div className="w-[28px] h-[28px] ml-[10px] flex justify-center items-center rounded-full border border-checked2 transition-colors duration-300">

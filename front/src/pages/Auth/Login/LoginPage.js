@@ -92,6 +92,8 @@ const LoginPage = () => {
   const [pwErrorMsg, setPwErrorMsg] = useState("");
   const [signUpError, setsignUpError] = useState("");
 
+  useEffect(() => {}, [signUpError]);
+
   const onLogin = async () => {
     if (signUpForm.email.length === 0) {
       setEmailError(true);
