@@ -1,12 +1,16 @@
 import Header from "./Header";
-import NoticeList from "./NoticeList/NoticeList";
-import { useState } from "react";
+import NoticeListSaved from "./NoticeList/NoticeListSaved";
+import NoticeListToday from "./NoticeList/NoticeListToday";
+import { saveState } from "../../util/atom";
+import { useRecoilState } from "recoil";
 import { Helmet } from "react-helmet";
 
 const MainPage = () => {
-  const [isAvailable, setIsAvailable] = useState(false);
+  // const [isAvailable, setIsAvailable] = useState(false);
+  const [isSaved, setIsSaved] = useRecoilState(saveState);
+  const isAvailable = true;
   const changeState = () => {
-    setIsAvailable(!isAvailable);
+    setIsSaved((prev) => !prev);
   };
 
   return (
@@ -17,7 +21,8 @@ const MainPage = () => {
       <Header />
       <div className="pt-[66px]"></div>
       <button onClick={changeState}>changeState</button>
-      <NoticeList isAvailable={isAvailable} />
+      <NoticeListSaved isSaved={isSaved} />
+      <NoticeListToday isAvailable={isAvailable} />
       {/* <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div> */}
     </div>
   );

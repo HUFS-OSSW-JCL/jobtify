@@ -1,9 +1,11 @@
 const DropDown = ({ options, comboBoxHandler, onClick }) => {
   return (
     <div className="z-30 bg-white block ml-auto mr-auto list-none mt-[-1px] p-1 border border-gray-300">
-      {options.map((x, i) =>
+      {options.map((x, i, key) =>
         x.indexOf(comboBoxHandler) > -1 ? (
-          <div onClick={() => onClick(i)}>{x}</div>
+          <div key={key} onClick={() => onClick(i)}>
+            {x}
+          </div>
         ) : null
       )}
     </div>

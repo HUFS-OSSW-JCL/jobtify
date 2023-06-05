@@ -10,7 +10,12 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../../util/AuthContext";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import axios from "axios";
 import { Helmet } from "react-helmet";
 
 const activeLabelStyles = {
@@ -119,6 +124,32 @@ const LoginPage = () => {
         // console.log(user);
         navigate(`/`);
         login();
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const uid = user.uid;
+            console.log(uid);
+            let data = {
+              uid: `${uid}`,
+            };
+            axios
+              .post(
+                "http://158.247.238.32:5001/json_test",
+                JSON.stringify(data),
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                  },
+                }
+              )
+              .then((response) => {
+                console.log(response);
+              })
+              .catch((e) => console.log(e));
+          } else {
+            console.log("no user");
+          }
+        });
       });
     } catch (e) {
       console.log(e.code);
@@ -144,7 +175,7 @@ const LoginPage = () => {
       <Helmet>
         <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
-      <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-center">
+      <div className="container min-w-[395px] mx-auto flex flex-col items-center justify-center">
         <h1 className="font-main font-bold text-[44px] mt-[147px]">로그인</h1>
         <form>
           <Center mt="60px">
