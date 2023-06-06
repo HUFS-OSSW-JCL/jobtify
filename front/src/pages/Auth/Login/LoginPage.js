@@ -17,6 +17,8 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import { userData } from "../../../util/atom";
+import { useSetRecoilState } from "recoil";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-31px)",
@@ -56,6 +58,7 @@ const theme = extendTheme({
 });
 
 const LoginPage = () => {
+  const setUserData = useSetRecoilState(userData);
   const { login } = useContext(AuthContext);
 
   const [signUpForm, setsignUpForm] = useState({
@@ -129,13 +132,14 @@ const LoginPage = () => {
         onAuthStateChanged(auth, (user) => {
           if (user) {
             const uid = user.uid;
-            console.log(uid);
+            localStorage.setItem("UID", uid);
+            // console.log(uid);
             let data = {
               uid: `${uid}`,
             };
             axios
               .post(
-                "http://158.247.238.32:5001/json_test",
+                "http://158.247.238.32:8000/json_test",
                 JSON.stringify(data),
                 {
                   headers: {
@@ -145,7 +149,8 @@ const LoginPage = () => {
                 }
               )
               .then((response) => {
-                console.log(response);
+                console.log(response.data);
+                setUserData([response.data]);
               })
               .catch((e) => console.log(e));
           } else {

@@ -23,6 +23,7 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("LOGGED_IN");
+    localStorage.removeItem("UID");
     setIsLoggedIn(false);
     let timerInterval;
     Swal.fire({
@@ -42,6 +43,7 @@ function App() {
         // console.log("I was closed by the timer");
       }
     });
+    // window.location.replace("/");
   };
 
   return (

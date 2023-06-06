@@ -2,13 +2,19 @@ import { Link } from "react-router-dom";
 import { GrFormPrevious } from "react-icons/gr";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const ShowInfoHeader = () => {
+const ShowInfoHeader = (props) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const favoriteClickListener = () => {
     setIsFavorite(!isFavorite);
   };
+  useEffect(() => {
+    if (props.bookmark) {
+      setIsFavorite(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="bg-white w-[395px] h-[55px] mx-auto flex flex-row items-center justify-start">
