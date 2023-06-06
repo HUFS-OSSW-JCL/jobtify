@@ -4,25 +4,28 @@ import Rallit
 import Jumpit
 import threading
 
-def siteFilter(sitename, keyword):
+def siteFilter(sitename, keyword, area):
     if sitename == "인크루트":
-        result = Incruit.SearchJob(keyword)
+        result = Incruit.SearchJob(keyword, area)
     elif sitename == "원티드":
-        result = wanted.SearchJob(keyword)
+        result = wanted.SearchJob(keyword, area)
     elif sitename == "점핏":
-        result = Jumpit.SearchJob(keyword)
+        result = Jumpit.SearchJob(keyword, area)
     elif sitename == "랠릿":
-        result = Rallit.SearchJob(keyword)
+        result = Rallit.SearchJob(keyword, area)
+    #return result
     print(result)
 
 if __name__ == "__main__":
-    sitelist = ["점핏", "인크루트", "랠릿", "원티드"]
+    sitelist = ["원티드", "랠릿", "인크루트", "점핏"]
     keys = list(input().split())
+    area = ["서울", "부산"]
 
     threads = []
+
     for site in sitelist:
         for key in keys:
-            t = threading.Thread(target = siteFilter, args = (site, key))
+            t = threading.Thread(target = siteFilter, args = (site, key, area))
             t.start()
             threads.append(t)
 
