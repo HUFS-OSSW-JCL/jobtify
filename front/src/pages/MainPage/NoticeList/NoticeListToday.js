@@ -1,6 +1,10 @@
 import NoticeListItem from "./NoticeListItem";
+import { useRecoilValue } from "recoil";
+import { userData } from "../../../util/atom";
 
 const NoticeListToday = (props) => {
+  const usrData = useRecoilValue(userData);
+
   return (
     <div className="w-[346px] flex flex-col justify-center items-start mb-[30px]">
       {localStorage.getItem("LOGGED_IN") ? (
@@ -9,7 +13,26 @@ const NoticeListToday = (props) => {
             <h1 className="font-main font-bold text-[24px] text-black mr-[143px] mt-[20px] mb-[9px]">
               오늘의 채용공고
             </h1>
-            <NoticeListItem
+            {usrData ? (
+              usrData.map((item, id) => {
+                return (
+                  <NoticeListItem
+                    key={id}
+                    id={id}
+                    // badge={item.crawl[0]}
+                    company="SK텔레콤"
+                    job={item.title}
+                    location={item.location}
+                    keywords={item.keywords}
+                    crawls={item.crawl}
+                    bookmark={item.bookmark}
+                  />
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+            {/* <NoticeListItem
               badge="wanted"
               company="SK텔레콤"
               job="Web Front-End Engineer"
@@ -20,7 +43,7 @@ const NoticeListToday = (props) => {
               company="구글코리아"
               job="강아지 쓰다듬는 사람"
               location="서울특별시"
-            />
+            /> */}
           </div>
         ) : (
           <div className="mt-[5px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
