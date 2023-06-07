@@ -25,7 +25,6 @@ const AddFilter = () => {
       </Helmet>
       <FilterHeader />
       <div className="pt-[75px]" />
-
       <div className="w-[395px] flex flex-col items-center justify-center">
         <div className="flex flex-col">
           <label
@@ -44,14 +43,14 @@ const AddFilter = () => {
           />
         </div>
         <div className="flex flex-col">
-          <p className="space-x-1 mt-[32px] font-main text-[16px] text-black font-bold">
+          <p className="space-x-1 ml-[14px] mt-[32px] font-main text-[16px] text-black font-bold">
             직무 키워드
           </p>
           <Keyword />
         </div>
         <div className="flex flex-col">
           <label
-            for="location"
+            htmlFor="location"
             className="mt-[32px] flex items-start font-bold text-gray-700 font-main"
           >
             회사 위치
@@ -67,12 +66,12 @@ const AddFilter = () => {
           </label>
           <div className="flex flex-row">
             <div>
-              <Chip name="인크루트" pic={incruit} />
-              <Chip name="랠릿" pic={rallit} />
+              <Chip name="인크루트" pic={incruit} onClickHandler={true} />
+              <Chip name="랠릿" pic={rallit} onClickHandler={true} />
             </div>
             <div>
-              <Chip name="원티드" pic={wanted} />
-              <Chip name="점핏" pic={jumpit} />
+              <Chip name="원티드" pic={wanted} onClickHandler={true} />
+              <Chip name="점핏" pic={jumpit} onClickHandler={true} />
             </div>
           </div>
         </div>

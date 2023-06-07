@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../../util/AuthContext";
 import { useSetRecoilState, useRecoilValue } from "recoil";
-import { modalState } from "../../util/atom";
+import { modalState, userData } from "../../util/atom";
 
 const HeaderDropdown = (props) => {
   const { animate } = useRecoilValue(modalState);
   const setIsOpen = useSetRecoilState(modalState);
+  const setUserData = useSetRecoilState(userData);
 
   const onClose = () => {
     setIsOpen((prev) => {
@@ -23,6 +24,11 @@ const HeaderDropdown = (props) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { logout } = useContext(AuthContext);
+
+  const onLogout = () => {
+    logout();
+    setUserData();
+  };
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -46,7 +52,7 @@ const HeaderDropdown = (props) => {
           {isLoggedIn ? (
             <ul className="mr-[11px]">
               <li>내 정보</li>
-              <li onClick={logout} className="cursor-pointer">
+              <li onClick={onLogout} className="cursor-pointer">
                 로그아웃
               </li>
             </ul>

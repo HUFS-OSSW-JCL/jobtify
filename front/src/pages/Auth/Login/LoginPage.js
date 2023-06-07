@@ -10,8 +10,15 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../../util/AuthContext";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import axios from "axios";
 import { Helmet } from "react-helmet";
+import { userData } from "../../../util/atom";
+import { useSetRecoilState } from "recoil";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-31px)",
@@ -51,6 +58,7 @@ const theme = extendTheme({
 });
 
 const LoginPage = () => {
+  const setUserData = useSetRecoilState(userData);
   const { login } = useContext(AuthContext);
 
   const [signUpForm, setsignUpForm] = useState({
@@ -87,6 +95,8 @@ const LoginPage = () => {
   const [pwErrorMsg, setPwErrorMsg] = useState("");
   const [signUpError, setsignUpError] = useState("");
 
+  useEffect(() => {}, [signUpError]);
+
   const onLogin = async () => {
     if (signUpForm.email.length === 0) {
       setEmailError(true);
@@ -119,6 +129,34 @@ const LoginPage = () => {
         // console.log(user);
         navigate(`/`);
         login();
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const uid = user.uid;
+            localStorage.setItem("UID", uid);
+            // console.log(uid);
+            let data = {
+              uid: `${uid}`,
+            };
+            axios
+              .post(
+                "http://158.247.238.32:8000/json_test",
+                JSON.stringify(data),
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                  },
+                }
+              )
+              .then((response) => {
+                console.log(response.data);
+                setUserData([response.data]);
+              })
+              .catch((e) => console.log(e));
+          } else {
+            console.log("no user");
+          }
+        });
       });
     } catch (e) {
       console.log(e.code);
@@ -144,7 +182,7 @@ const LoginPage = () => {
       <Helmet>
         <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
-      <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-center">
+      <div className="container min-w-[395px] mx-auto flex flex-col items-center justify-center">
         <h1 className="font-main font-bold text-[44px] mt-[147px]">로그인</h1>
         <form>
           <Center mt="60px">

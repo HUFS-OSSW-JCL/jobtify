@@ -1,13 +1,73 @@
 import Header from "./Header";
-import NoticeList from "./NoticeList/NoticeList";
-import { useState } from "react";
+import NoticeListSaved from "./NoticeList/NoticeListSaved";
+import NoticeListToday from "./NoticeList/NoticeListToday";
+import { userData, todayState } from "../../util/atom";
+import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import { Helmet } from "react-helmet";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const MainPage = () => {
-  const [isAvailable, setIsAvailable] = useState(false);
-  const changeState = () => {
-    setIsAvailable(!isAvailable);
-  };
+  // const [isAvailable, setIsAvailable] = useState(false);
+  const setUserData = useSetRecoilState(userData);
+  // const [isSaved, setIsSaved] = useRecoilState(saveState);
+  const usrData = useRecoilValue(userData);
+  const [loaded, setLoaded] = useState(false);
+
+  const [isAvailable, setIsAvailable] = useRecoilState(todayState);
+  // const changeState = () => {
+  //   setIsSaved((prev) => !prev);
+  // };
+
+  useEffect(() => {
+    if (localStorage.getItem("LOGGED_IN")) {
+      let data = {
+        uid: `${localStorage.getItem("UID")}`,
+      };
+      const fetchData = async () => {
+        await axios
+          .post("http://158.247.238.32:8000/json_test", JSON.stringify(data), {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+            setUserData([response.data]);
+            setLoaded(true);
+          })
+          .catch((e) => console.log(e));
+      };
+      fetchData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    if (!localStorage.getItem("LOGGED_IN")) {
+      setUserData([]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("LOGGED_IN") && loaded) {
+      if (usrData.length === 0) {
+        setIsAvailable(false);
+      } else {
+        setIsAvailable(true);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [usrData, setUserData]);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("LOGGED_IN")) {
+
+  //   }
+
+  //   // console.log(usrData);
+  // }, [isAvailable, usrData, setIsAvailable]);
 
   return (
     <div className="container flex flex-col items-center justify-start min-w-[395px] mx-auto bg-light-blue">
@@ -16,8 +76,11 @@ const MainPage = () => {
       </Helmet>
       <Header />
       <div className="pt-[66px]"></div>
-      <button onClick={changeState}>changeState</button>
-      <NoticeList isAvailable={isAvailable} />
+      {/* <button onClick={changeState}>changeState</button> */}
+
+      <NoticeListSaved />
+      <NoticeListToday isAvailable={isAvailable} />
+
       {/* <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div> */}
     </div>
   );
