@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { locationState } from "../util/atom";
+import { useSetRecoilState } from "recoil";
 import DropDown from "./DropDown";
 
 const deselectedOptions = [
@@ -23,6 +25,8 @@ const deselectedOptions = [
 ];
 
 const Location = () => {
+  const setLocation = useSetRecoilState(locationState);
+
   const [hasText, setHasText] = useState(false); // input값 유무
   const [inputValue, setInputValue] = useState(""); // input값 상태
   // eslint-disable-next-line no-unused-vars
@@ -41,8 +45,15 @@ const Location = () => {
 
   const dropDownClickHandler = (clickedOption) => {
     setInputValue(deselectedOptions[clickedOption]);
+    setLocation(deselectedOptions[clickedOption]);
+    console.log(deselectedOptions[clickedOption]);
     // console.log(clickedOption);
   };
+
+  useEffect(() => {
+    setLocation(inputValue);
+    console.log(inputValue);
+  }, [inputValue, setLocation]);
 
   return (
     <div>

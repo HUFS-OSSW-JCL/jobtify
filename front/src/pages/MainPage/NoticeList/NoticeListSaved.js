@@ -19,7 +19,7 @@ const NoticeListSaved = (props) => {
                     key={id}
                     id={id}
                     // badge={item.crawl[0]}
-                    company="SK텔레콤"
+                    company={item.company}
                     job={item.title}
                     location={item.location}
                     keywords={item.keywords}
@@ -28,21 +28,22 @@ const NoticeListSaved = (props) => {
                   />
                 );
               } else {
-                return (
-                  <div className="mt-[10px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
-                    <div className="w-[300px] mt-[10px] mb-[40px] flex flex-col justify-center items-center">
-                      <p className="text-center font-main font-bold text-[20px]">
-                        등록된 기업이 없어요
-                      </p>
-                      <p className="mt-[10px] font-main text-fontgray text-center text-[14px]">
-                        공고를 클릭해서 별 모양을 누르고
-                      </p>
-                      <p className="font-main text-fontgray text-center text-[14px]">
-                        즐겨찾기를 등록해보세요
-                      </p>
-                    </div>
-                  </div>
-                );
+                // return (
+                //   <div className="mt-[10px] container w-[346px] min-h-[140px] rounded-xl mx-auto flex flex-col items-center justify-start bg-white">
+                //     <div className="w-[300px] mt-[10px] mb-[40px] flex flex-col justify-center items-center">
+                //       <p className="text-center font-main font-bold text-[20px]">
+                //         등록된 기업이 없어요
+                //       </p>
+                //       <p className="mt-[10px] font-main text-fontgray text-center text-[14px]">
+                //         공고를 클릭해서 별 모양을 누르고
+                //       </p>
+                //       <p className="font-main text-fontgray text-center text-[14px]">
+                //         즐겨찾기를 등록해보세요
+                //       </p>
+                //     </div>
+                //   </div>
+                // );
+                return null;
               }
             })
           ) : (

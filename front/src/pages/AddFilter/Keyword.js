@@ -1,35 +1,62 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { keywordState } from "../../util/atom";
 
-const Keyword = () => {
+const Keyword = (props) => {
   /* keyword */
+  const [keyword, setKeyword] = useRecoilState(keywordState);
   const [tags, setTags] = useState([]);
   const [tag, setTag] = useState("");
+
   const removeTag = (i) => {
     const clonetags = tags.slice();
     clonetags.splice(i, 1);
     setTags(clonetags);
+    setKeyword(tags);
+    // console.log(keyword);
   };
+
   const addTag = (e) => {
+    // 태그 입력 관리
     setTag(e.target.value);
   };
+
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      handleClick();
+      handleEnter();
+      // setKeyword([tags]);
+      // console.log(tags);
     }
   };
-  const handleClick = () => {
+
+  const handleEnter = () => {
     if (tags.includes(tag)) {
       setTag("");
       return;
     }
+    if (tag === "") return;
     setTags([...tags, tag]);
+    setKeyword(tags);
+    // console.log(keyword);
     setTag("");
   };
+
+  useEffect(() => {
+    setKeyword(tags);
+    console.log(keyword);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setKeyword, tags]);
+
+  // useEffect(() => {
+  //   console.log(tags);
+  //   setKeyword([tags]);
+  //   console.log(keyword);
+  // }, [setKeyword, tags]);
 
   return (
     <div className="w-[350px] h-auto flex flex-col items-center justify-center overflow-auto">
       {tags.length !== 0 && (
-        <div className="flex flex-wrap items-center w-[350px] mb-[10px] break-all">
+        <div className="pl-[12px] flex flex-wrap items-center w-[350px] mb-[10px] break-all">
           {tags.map((e, i) => (
             <div
               key={i}

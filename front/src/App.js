@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import Swal from "sweetalert2";
 import SignUpPage from "./pages/Auth/SignUp/SignUpPage";
 import { RecoilRoot } from "recoil";
+import AfterSignup from "./pages/Auth/SignUp/AfterSignup";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -56,6 +57,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
               <Route exact path="/login" element={<LoginPage />} />
               <Route exact path="/signup" element={<SignUpPage />} />
+              <Route exact path="/first" element={<AfterSignup />} />
               <Route path="/" element={<MainPage />} />
               <Route path="/add" element={<AddFilter />} />
               <Route path="/ShowInfo" element={<ShowInfo />} />
