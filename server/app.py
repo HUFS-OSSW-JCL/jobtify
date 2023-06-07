@@ -93,8 +93,10 @@ def get_jd():
     jds = doc_ref.where(u'link', u'==', data.get('link')).stream()
     info_ref = db.collection(u'users').document(uid)
     info = info_ref.get()
+    site_arr = []
     for jd in jds:
         if jd.to_dict()['link'] == data.get('link'):
+            site_arr.append(jd.to_dict()['site'])
             response = make_response(
                 jsonify(
                     {
@@ -102,7 +104,7 @@ def get_jd():
                         'company':jd.to_dict()['company'],
                         'link':jd.to_dict()['link'],
                         'title':jd.to_dict()['title'],
-                        'site':jd.to_dict()['site'],
+                        'site':site_arr,
                         'keywords':info.to_dict()['keywords'],
                         'country':info.to_dict()['country']
                     }
@@ -129,6 +131,6 @@ def set_bookmark():
     response = make_response(jsonify({'status': 'good'}))
     print(response)
     return response
-
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
