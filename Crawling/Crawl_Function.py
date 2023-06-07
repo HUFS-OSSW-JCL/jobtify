@@ -14,6 +14,7 @@ class Crawler:
         self.options = Options()
         self.url = url
         #self.options.add_argument("--window-size = 1920, 1080")
+        #self.options.add_argument("--headless")
         self.driver = webdriver.Chrome(chrome_options=self.options)
 
     """

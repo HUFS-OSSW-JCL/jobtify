@@ -17,9 +17,10 @@ def siteFilter(sitename, keyword, area):
     print(result)
 
 if __name__ == "__main__":
-    sitelist = ["원티드", "랠릿", "인크루트", "점핏"]
-    keys = list(input().split())
-    area = ["서울", "부산"]
+    sitelist = ["인크루트"]
+    #keys = list(input().split())
+    keys = ["서버"]
+    area = ["서울"]
 
     threads = []
 
