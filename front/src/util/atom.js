@@ -36,3 +36,21 @@ export const userData = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const keywordState = atom({
+  // 가입 시 키워드 저장
+  key: "keywordState",
+  default: [],
+});
+
+export const locationState = atom({
+  // 가입 시 회사 위치 저장
+  key: "locationState",
+  default: "",
+});
+
+export const crawlState = atom({
+  // 가입 시 크롤링 사이트 저장
+  key: "crawlState",
+  default: [],
+});
