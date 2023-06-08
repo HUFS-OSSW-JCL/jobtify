@@ -36,7 +36,7 @@ class Crawler:
         self.driver.find_element(By.XPATH, input_x_path).send_keys(keyword)
         time.sleep(1)
         self.driver.find_element(By.XPATH, input_x_path).send_keys(Keys.RETURN)
-        time.sleep(2)
+        time.sleep(1)
 
     """
     검색한 페이지에서 채용공고만 추출

@@ -2,6 +2,8 @@ from selenium import webdriver
 import Crawl_Function
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 def SearchJob(keyword, area_list):
@@ -20,7 +22,7 @@ def SearchJob(keyword, area_list):
     incruit.Search(keyword, "//*[@id=\"txtSearchKw\"]", "//*[@id=\"txtSearchKw\"]")
     incruit.driver.find_element(By.XPATH, "//*[@id=\"txtSearchKw\"]").send_keys(Keys.ARROW_LEFT)
     incruit.driver.find_element(By.XPATH, "//*[@id=\"txtSearchKw\"]").send_keys(Keys.ARROW_RIGHT)
-    time.sleep(1)
+    time.sleep(0.5)
 
 
     filter = incruit.driver.find_element(By.CSS_SELECTOR, "#divAutoComplete > ul")
