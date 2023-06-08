@@ -21,25 +21,49 @@ const MainPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("LOGGED_IN")) {
-      let data = {
-        uid: `${localStorage.getItem("UID")}`,
-      };
-      const fetchData = async () => {
+      // let data = {
+      //   uid: `${localStorage.getItem("UID")}`,
+      // };
+      // const fetchData = async () => {
+      //   await axios
+      //     .post("http://158.247.238.32:8000/json_test", JSON.stringify(data), {
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //         "Access-Control-Allow-Origin": "*",
+      //       },
+      //     })
+      //     .then((response) => {
+      //       console.log(response.data);
+      //       setUserData([response.data]);
+      //       setLoaded(true);
+      //     })
+      //     .catch((e) => {
+      //       console.log(e);
+      //       alert("network error...");
+      //     });
+      // };
+      const getJds = async () => {
+        let data = {
+          uid: `${localStorage.getItem("UID")}`,
+        };
         await axios
-          .post("http://158.247.238.32:8000/json_test", JSON.stringify(data), {
+          .post("http://158.247.238.32:8000/get_jds", JSON.stringify(data), {
             headers: {
               "Content-Type": "application/json",
               "Access-Control-Allow-Origin": "*",
             },
           })
           .then((response) => {
-            console.log(response.data);
-            setUserData([response.data]);
+            // console.log(`data: ${JSON.stringify(response)}`);
+            // console.log("sended");
+            console.log(usrData);
+            setUserData(response.data);
             setLoaded(true);
           })
           .catch((e) => console.log(e));
       };
-      fetchData();
+      // fetchData();
+      getJds();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -60,14 +84,6 @@ const MainPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usrData, setUserData]);
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("LOGGED_IN")) {
-
-  //   }
-
-  //   // console.log(usrData);
-  // }, [isAvailable, usrData, setIsAvailable]);
 
   return (
     <div className="container flex flex-col items-center justify-start min-w-[395px] mx-auto bg-light-blue">

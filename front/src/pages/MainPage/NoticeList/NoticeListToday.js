@@ -20,7 +20,7 @@ const NoticeListToday = (props) => {
                     key={id}
                     id={id}
                     // badge={item.crawl[0]}
-                    company="SK텔레콤"
+                    company={item.company}
                     job={item.title}
                     location={item.location}
                     keywords={item.keywords}

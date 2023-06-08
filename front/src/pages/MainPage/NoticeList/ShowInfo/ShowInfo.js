@@ -1,10 +1,12 @@
 import { Helmet } from "react-helmet";
 import ShowInfoHeader from "./ShowInfoHeader";
 import ShowInfoChip from "./ShowInfoChip";
-// import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ShowInfo = () => {
+  const navigate = useNavigate();
+
   const data = useLocation();
   const company = data.state?.company;
   const job = data.state?.job;
@@ -12,9 +14,13 @@ const ShowInfo = () => {
   const keyword = data.state?.keyword;
   const crawls = data.state?.crawls;
   const bookmark = data.state?.bookmark;
-  // useEffect(() => {
-  //   console.log(crawls);
-  // }, []);
+
+  useEffect(() => {
+    if (company === null) {
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="container max-w-[395px] mx-auto flex flex-col items-start justify-start">
