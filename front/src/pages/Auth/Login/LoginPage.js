@@ -139,7 +139,7 @@ const LoginPage = () => {
             };
             axios
               .post(
-                "http://158.247.238.32:8000/json_test",
+                "http://158.247.238.32:8000/get_jds",
                 JSON.stringify(data),
                 {
                   headers: {
@@ -149,8 +149,8 @@ const LoginPage = () => {
                 }
               )
               .then((response) => {
-                console.log(response.data);
-                setUserData([response.data]);
+                // console.log(response.data);
+                setUserData(response.data);
               })
               .catch((e) => console.log(e));
           } else {

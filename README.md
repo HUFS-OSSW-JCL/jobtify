@@ -3,7 +3,7 @@
 # :family: 팀원
 |이름|역할|GitHub|
 |------|---|---|
-|이원준|**팀장**, 백엔드 개발, 디자인| <a href="https://github.com/workoutplz"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
+|이원준|**팀장**, 백엔드 개발, 디자인| <a href="https://github.com/workoutplz"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
 |정승준|프론트엔드 개발, 디자인| <a href="https://github.com/whateveriiwant"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
 |최인성|크롤링 개발| <a href="https://github.com/CHOI-INSEONG"><img src="https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=white"/></a> |
 
@@ -38,7 +38,7 @@
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
   <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=React-Router&logoColor=white"/>
   <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Recoil-F26B00?style=flat-square&logo=recoil&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Recoil-F26B00?style=flat-square&logo=React&logoColor=white"/>
   <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/>
 </div>
 

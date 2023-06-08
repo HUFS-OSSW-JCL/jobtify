@@ -10,7 +10,11 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { Helmet } from "react-helmet";
 
 const activeLabelStyles = {
@@ -128,8 +132,17 @@ const SignUpPage = () => {
         signUpForm.email,
         signUpForm.password
       ).then((user) => {
-        // console.log(user);
-        navigate(`/login`);
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            localStorage.setItem("UID", user.uid);
+            localStorage.setItem("LOGGED_IN", true);
+          } else {
+            console.log("no user");
+          }
+        });
+        // const uid = user.uid;
+        // localStorage.setItem("UID", uid);
+        navigate(`/first`);
       });
     } catch (e) {
       console.log(e.code);
