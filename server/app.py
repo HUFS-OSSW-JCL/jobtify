@@ -131,6 +131,23 @@ def set_bookmark():
     response = make_response(jsonify({'status': 'good'}))
     print(response)
     return response
-    
+
+@app.route('/get_crawl_info', methods=['POST'])
+def get_crawl_info():
+    uid = 'GvJjWq2qQWWuzQ97mAR7tpk5SG33'
+    info_ref = db.collection(u'users').document(uid)
+    info = info_ref.get()
+    response = make_response(
+        jsonify(
+            {
+                'uid': uid,
+                'country': info.to_dict()['country'],
+                'keywords': info.to_dict()['keywords'],
+                'sites': info.to_dict()['sites']
+            }
+        )
+    )
+    return response
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
