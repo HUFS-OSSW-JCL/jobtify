@@ -134,7 +134,7 @@ def set_bookmark():
 
 @app.route('/get_crawl_info', methods=['POST'])
 def get_crawl_info():
-    uid = 'GvJjWq2qQWWuzQ97mAR7tpk5SG33'
+    uid = 'etFgreEMKxYI726JSZ164rRcY3x1'
     info_ref = db.collection(u'users').document(uid)
     info = info_ref.get()
     response = make_response(
