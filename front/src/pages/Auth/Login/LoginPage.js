@@ -149,7 +149,7 @@ const LoginPage = () => {
                 }
               )
               .then((response) => {
-                // console.log(response.data);
+                console.log(response.data);
                 setUserData(response.data);
               })
               .catch((e) => console.log(e));

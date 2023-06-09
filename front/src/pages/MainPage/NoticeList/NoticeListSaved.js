@@ -21,10 +21,11 @@ const NoticeListSaved = (props) => {
                     // badge={item.crawl[0]}
                     company={item.company}
                     job={item.title}
-                    location={item.location}
+                    location={item.country}
                     keywords={item.keywords}
-                    crawls={item.crawl}
+                    crawls={item.site}
                     bookmark={item.bookmark}
+                    link={item.link}
                   />
                 );
               } else {
@@ -68,7 +69,6 @@ const NoticeListSaved = (props) => {
           </div>
         </div>
       )}
-      {}
     </div>
   );
 };

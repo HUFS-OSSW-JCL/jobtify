@@ -19,6 +19,8 @@ const ShowInfoChip = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {}, [setBadge]);
+
   return (
     <div className="mr-[10px]">
       <div className="w-max h-[45px] mt-[7px] border border-gray-300 flex flex-row justify-start items-center bg-white rounded-3xl transition-colors duration-300">

@@ -54,3 +54,8 @@ export const crawlState = atom({
   key: "crawlState",
   default: [],
 });
+
+export const jdDataState = atom({
+  key: "jdDataState",
+  default: [],
+});

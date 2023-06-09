@@ -21,27 +21,6 @@ const MainPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("LOGGED_IN")) {
-      // let data = {
-      //   uid: `${localStorage.getItem("UID")}`,
-      // };
-      // const fetchData = async () => {
-      //   await axios
-      //     .post("http://158.247.238.32:8000/json_test", JSON.stringify(data), {
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //         "Access-Control-Allow-Origin": "*",
-      //       },
-      //     })
-      //     .then((response) => {
-      //       console.log(response.data);
-      //       setUserData([response.data]);
-      //       setLoaded(true);
-      //     })
-      //     .catch((e) => {
-      //       console.log(e);
-      //       alert("network error...");
-      //     });
-      // };
       const getJds = async () => {
         let data = {
           uid: `${localStorage.getItem("UID")}`,
@@ -96,7 +75,7 @@ const MainPage = () => {
 
       <NoticeListSaved />
       <NoticeListToday isAvailable={isAvailable} />
-
+      <div className="min-w-[395px] bg-light-blue min-h-[130px]"></div>
       {/* <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div> */}
     </div>
   );
