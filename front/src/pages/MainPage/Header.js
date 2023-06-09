@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <div className="fixed container bg-light-blue w-[395px] h-[66px] pb-[10px] pt-[10px] mx-auto flex flex-col items-center justify-center">
+    <div className="opacity-90 fixed container bg-light-blue w-[390px] h-[66px] pb-[10px] pt-[10px] mx-auto flex flex-col items-center justify-center">
       <div className="flex flex-row items-center">
         <h1 className="font-main text-black text-[32px] font-bold ml-[0px]">
           Jobtify

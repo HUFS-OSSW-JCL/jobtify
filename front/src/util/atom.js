@@ -59,3 +59,8 @@ export const jdDataState = atom({
   key: "jdDataState",
   default: [],
 });
+
+export const favState = atom({
+  key: "favState",
+  default: false,
+});

@@ -8,44 +8,39 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const MainPage = () => {
-  // const [isAvailable, setIsAvailable] = useState(false);
   const setUserData = useSetRecoilState(userData);
-  // const [isSaved, setIsSaved] = useRecoilState(saveState);
   const usrData = useRecoilValue(userData);
   const [loaded, setLoaded] = useState(false);
 
   const [isAvailable, setIsAvailable] = useRecoilState(todayState);
-  // const changeState = () => {
-  //   setIsSaved((prev) => !prev);
-  // };
+
+  const getJds = () => {
+    let data = {
+      uid: `${localStorage.getItem("UID")}`,
+    };
+    axios
+      .post("http://158.247.238.32:8000/get_jds", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+        setLoaded(true);
+        console.log(response.data);
+      })
+      .catch((e) => console.log(e));
+  };
 
   useEffect(() => {
     if (localStorage.getItem("LOGGED_IN")) {
-      const getJds = async () => {
-        let data = {
-          uid: `${localStorage.getItem("UID")}`,
-        };
-        await axios
-          .post("http://158.247.238.32:8000/get_jds", JSON.stringify(data), {
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
-          })
-          .then((response) => {
-            // console.log(`data: ${JSON.stringify(response)}`);
-            // console.log("sended");
-            console.log(usrData);
-            setUserData(response.data);
-            setLoaded(true);
-          })
-          .catch((e) => console.log(e));
-      };
       // fetchData();
       getJds();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     if (!localStorage.getItem("LOGGED_IN")) {
       setUserData([]);
@@ -65,7 +60,7 @@ const MainPage = () => {
   }, [usrData, setUserData]);
 
   return (
-    <div className="container flex flex-col items-center justify-start min-w-[395px] mx-auto bg-light-blue">
+    <div className="container flex flex-col items-center justify-start min-w-[390px] mx-auto bg-light-blue">
       <Helmet>
         <meta name="theme-color" content="#EEF1F4" />
       </Helmet>
@@ -75,7 +70,7 @@ const MainPage = () => {
 
       <NoticeListSaved />
       <NoticeListToday isAvailable={isAvailable} />
-      <div className="min-w-[395px] bg-light-blue min-h-[130px]"></div>
+      <div className="min-w-[390px] bg-light-blue min-h-[130px]"></div>
       {/* <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div> */}
     </div>
   );

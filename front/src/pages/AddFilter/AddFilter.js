@@ -19,13 +19,13 @@ const AddFilter = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="container max-w-[395px] mx-auto flex flex-col items-center justify-start">
+    <div className="container max-w-[390px] mx-auto flex flex-col items-center justify-start">
       <Helmet>
         <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
       <FilterHeader />
       <div className="pt-[75px]" />
-      <div className="w-[395px] flex flex-col items-center justify-center">
+      <div className="w-[390px] flex flex-col items-center justify-center">
         <div className="flex flex-col">
           <label
             htmlFor="filtername"
