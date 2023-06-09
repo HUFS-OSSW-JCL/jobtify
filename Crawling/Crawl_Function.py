@@ -14,6 +14,7 @@ class Crawler:
         self.options = Options()
         self.url = url
         #self.options.add_argument("--window-size = 1920, 1080")
+        #self.options.add_argument("--headless")
         self.driver = webdriver.Chrome(chrome_options=self.options)
 
     """
@@ -35,7 +36,7 @@ class Crawler:
         self.driver.find_element(By.XPATH, input_x_path).send_keys(keyword)
         time.sleep(1)
         self.driver.find_element(By.XPATH, input_x_path).send_keys(Keys.RETURN)
-        time.sleep(2)
+        time.sleep(1)
 
     """
     검색한 페이지에서 채용공고만 추출
@@ -95,7 +96,7 @@ class Crawler:
         last_height = self.driver.execute_script("return document.body.scrollHeight")
         while True:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(2.5)
+            time.sleep(2.0)
             new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 break

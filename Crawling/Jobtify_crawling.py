@@ -4,7 +4,12 @@ import Rallit
 import Jumpit
 import threading
 
+Sema = threading.Semaphore(4)
+
+
 def siteFilter(sitename, keyword, area):
+
+    Sema.acquire()
     if sitename == "인크루트":
         result = Incruit.SearchJob(keyword, area)
     elif sitename == "원티드":
@@ -15,11 +20,14 @@ def siteFilter(sitename, keyword, area):
         result = Rallit.SearchJob(keyword, area)
     #return result
     print(result)
+    Sema.release()
+
 
 if __name__ == "__main__":
-    sitelist = ["원티드", "랠릿", "인크루트", "점핏"]
+    sitelist = ["인크루트", "랠릿", "점핏", "원티드"]
     keys = list(input().split())
-    area = ["서울", "부산"]
+    #keys = ["서버"]
+    area = ["서울", "경기", "인천"]
 
     threads = []
 
