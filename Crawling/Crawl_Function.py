@@ -51,7 +51,7 @@ class Crawler:
     GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
     """
 
-    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_link_selector):
+    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_link_selector,site):
         try:
             for jobs in job_lists:
                 job_dict = {}
@@ -59,9 +59,10 @@ class Crawler:
                     job_title = jobs.find_element(By.CSS_SELECTOR, job_title_selector)
                     job_company = jobs.find_element(By.CSS_SELECTOR, job_company_selector)
                     job_link = jobs.find_element(By.CSS_SELECTOR, job_link_selector).get_attribute("href")
-                    job_dict['공고명'] = job_title.text
-                    job_dict['회사명'] = job_company.text
-                    job_dict['링크'] = job_link
+                    job_dict['title'] = job_title.text
+                    job_dict['company'] = job_company.text
+                    job_dict['link'] = job_link
+                    job_dict['site'] = site
                     self.job_list.append(job_dict)
                 except Exception as e:
                     pass

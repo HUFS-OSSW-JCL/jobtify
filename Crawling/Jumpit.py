@@ -10,7 +10,7 @@ def SearchJob(keyword, area_list):
     """
     try:
         jumpit.Click_By_CSS_SELECTOR("#modal > div > div > div.sc-ewSTlh.bkQpMn > button:nth-child(2)")
-        time.sleep(1)
+        time.sleep(2)
     except Exception:
         pass
 
@@ -55,7 +55,7 @@ def SearchJob(keyword, area_list):
     """
     try:
         job_lists = jumpit.GetJobInfo("sc-fkJVfC.cVBfrj", "div")
-        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", "a")
+        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", "a", "Jumpit")
     except Exception as e:
         pass
     return job_dict
