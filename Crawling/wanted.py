@@ -46,5 +46,5 @@ def SearchJob(keyword, area_list):
 
     list = wanted.driver.find_element(By.CSS_SELECTOR, "#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw")
     list2 = list.find_elements(By.CSS_SELECTOR, "div")
-    job_list = wanted.ReturnList(list2, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ","a", "Wanted")
+    job_list = wanted.ReturnList(list2, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ","a", "wanted")
     return job_list

@@ -55,7 +55,7 @@ def SearchJob(keyword, area_list):
     """
     try:
         job_lists = jumpit.GetJobInfo("sc-fkJVfC.cVBfrj", "div")
-        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", "a", "Jumpit")
+        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", "a", "jumpit")
     except Exception as e:
         pass
     return job_dict

@@ -42,7 +42,7 @@ def SearchJob(keyword, area):
             job_dict['title'] = job_title.text
             job_dict['company'] = job_company.text
             job_dict['link'] = job_link
-            job_dict['site'] = "Rallit"
+            job_dict['site'] = "rallit"
             jobs.append(job_dict)
     except Exception:
         pass
