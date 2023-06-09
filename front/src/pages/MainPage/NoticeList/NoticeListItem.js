@@ -43,6 +43,7 @@ const NoticeListItem = (props) => {
         keyword: keywords,
         crawls: crawls,
         bookmark: props.bookmark,
+        link: props.link,
       },
     });
   };
