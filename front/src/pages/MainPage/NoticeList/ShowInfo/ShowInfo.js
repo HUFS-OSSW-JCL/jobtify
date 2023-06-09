@@ -49,7 +49,7 @@ const ShowInfo = (props) => {
   const link = data.state?.link;
 
   return (
-    <div className="container max-w-[395px] mx-auto flex flex-col items-start justify-start">
+    <div className="container max-w-[390px] mx-auto flex flex-col items-start justify-start">
       <Helmet>
         <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
@@ -62,7 +62,7 @@ const ShowInfo = (props) => {
         link={link}
         keywords={keyword}
       />
-      <div className="min-w-[395px] ml-[35px] mt-[10px] flex flex-col items-start justify-start">
+      <div className="min-w-[390px] ml-[35px] mt-[10px] flex flex-col items-start justify-start">
         <p className="text-[18px] font-main text-gray-400 mb-[-5px]">
           {dataState ? company : <p>Loading...</p>}
         </p>
@@ -70,7 +70,7 @@ const ShowInfo = (props) => {
           {dataState ? title : <p>Loading...</p>}
         </p>
       </div>
-      <div className="min-w-[395px] ml-[35px] mt-[30px] flex flex-col items-start justify-start overflow-auto">
+      <div className="min-w-[390px] ml-[35px] mt-[30px] flex flex-col items-start justify-start overflow-auto">
         <p className="text-[18px] font-main font-bold text-gray-400">키워드</p>
         <div className="flex flex-wrap items-center w-[350px] mb-[10px] break-all">
           {keyword &&
@@ -90,7 +90,7 @@ const ShowInfo = (props) => {
             })}
         </div>
       </div>
-      <div className="min-w-[395px] ml-[35px] mt-[30px] flex flex-col items-start justify-start">
+      <div className="min-w-[390px] ml-[35px] mt-[30px] flex flex-col items-start justify-start">
         <p className="text-[18px] font-main font-bold text-gray-400">
           회사 위치
         </p>
@@ -98,7 +98,7 @@ const ShowInfo = (props) => {
           {dataState ? dataState.country : <p>Loading...</p>}
         </p>
       </div>
-      <div className="min-w-[395px] ml-[35px] mt-[30px] flex flex-col items-start justify-start">
+      <div className="min-w-[390px] ml-[35px] mt-[30px] flex flex-col items-start justify-start">
         <p className="text-[18px] font-main font-bold text-gray-400">
           정보를 가져오는 사이트
         </p>

@@ -11,20 +11,22 @@ const ShowInfoHeader = (props) => {
   const dataState = useRecoilValue(jdDataState);
 
   useEffect(() => {
-    console.log(props.bookmark);
+    console.log(`bookmarkState : ${props.bookmark}`);
     if (props.bookmark === true) {
-      setIsFavorite((fav) => !fav);
+      setIsFavorite(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataState]);
-  const [isFavorite, setIsFavorite] = useState(false);
+  let [isFavorite, setIsFavorite] = useState(false);
 
   const favoriteClickListener = () => {
-    setIsFavorite((fav) => !fav);
+    isFavorite = !isFavorite;
+    setIsFavorite(isFavorite);
     // console.log(`fav : ${isFavorite}`);
+    sendData();
   };
 
-  const sendData = async () => {
+  const sendData = () => {
     let data = {
       uid: `${localStorage.getItem("UID")}`,
       bookmark: isFavorite,
@@ -36,7 +38,7 @@ const ShowInfoHeader = (props) => {
       title: `${props.title}`,
     };
     console.log(data);
-    await axios
+    axios
       .post("http://158.247.238.32:8000/set_bookmark", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +55,7 @@ const ShowInfoHeader = (props) => {
       link: `${props.link}`,
     };
 
-    await axios
+    axios
       .post("http://158.247.238.32:8000/get_jd", JSON.stringify(data1), {
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +70,7 @@ const ShowInfoHeader = (props) => {
 
   useEffect(() => {
     console.log(`isFavorite : ${isFavorite}`);
-    sendData();
+    // sendData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isFavorite]);
 

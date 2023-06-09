@@ -15,7 +15,7 @@ const NoticeListItem = (props) => {
   useEffect(() => {
     setKeywords((props.keywords || "").split("=="));
     setCrawls((props.crawls || "").split("=="));
-    console.log(crawls);
+    // console.log(crawls);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
