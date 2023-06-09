@@ -39,9 +39,10 @@ def SearchJob(keyword, area):
             job_title = job.find_element(By.CLASS_NAME, "summary__title.css-5g43jj")
             job_company = job.find_element(By.CLASS_NAME, "summary__company-name.css-x5ccem")
             job_link = job.get_attribute("href")
-            job_dict['공고명'] = job_title.text
-            job_dict['회사명'] = job_company.text
-            job_dict['링크'] = job_link
+            job_dict['title'] = job_title.text
+            job_dict['company'] = job_company.text
+            job_dict['link'] = job_link
+            job_dict['site'] = "rallit"
             jobs.append(job_dict)
     except Exception:
         pass
