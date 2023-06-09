@@ -4,7 +4,7 @@ import Rallit
 import Jumpit
 import threading
 
-Sema = threading.Semaphore(2)
+Sema = threading.Semaphore(4)
 
 
 def siteFilter(sitename, keyword, area):
@@ -25,8 +25,8 @@ def siteFilter(sitename, keyword, area):
 
 if __name__ == "__main__":
     sitelist = ["인크루트", "랠릿", "점핏", "원티드"]
-    #keys = list(input().split())
-    keys = ["서버"]
+    keys = list(input().split())
+    #keys = ["서버"]
     area = ["서울", "경기", "인천"]
 
     threads = []
