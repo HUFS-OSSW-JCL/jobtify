@@ -3,31 +3,38 @@ import Incruit
 import Rallit
 import Jumpit
 import threading
+import requests
+import json
 
 Sema = threading.Semaphore(4)
 
+post_url = "http://158.247.238.32:8000/set_jds"
+get_url = "http://158.247.238.32:8000/get_crawl_info"
 
 def siteFilter(sitename, keyword, area):
 
     Sema.acquire()
-    if sitename == "인크루트":
+    if sitename == "incruit":
         result = Incruit.SearchJob(keyword, area)
-    elif sitename == "원티드":
+    elif sitename == "wanted":
         result = wanted.SearchJob(keyword, area)
-    elif sitename == "점핏":
+    elif sitename == "jumpit":
         result = Jumpit.SearchJob(keyword, area)
-    elif sitename == "랠릿":
+    elif sitename == "rallit":
         result = Rallit.SearchJob(keyword, area)
-    #return result
-    print(result)
+    data = result
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    r = requests.post(post_url, data=json.dumps(data), headers=headers)
     Sema.release()
 
 
 if __name__ == "__main__":
-    sitelist = ["인크루트", "랠릿", "점핏", "원티드"]
-    keys = list(input().split())
-    #keys = ["서버"]
-    area = ["서울", "경기", "인천"]
+
+    r = requests.post(get_url)
+    jsondata = r.json()
+    keys = jsondata["keywords"]
+    area = jsondata["country"]
+    sitelist = jsondata["sites"]
 
     threads = []
 
