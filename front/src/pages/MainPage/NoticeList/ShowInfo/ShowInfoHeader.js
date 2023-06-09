@@ -82,19 +82,18 @@ const ShowInfoHeader = (props) => {
       {isFavorite ? (
         <p
           onClick={favoriteClickListener}
-          className="transition-all duration-300 text-[30px] ml-[338px] text-yellow-400 border-none"
+          className="transition-all duration-300 text-[30px] ml-[308px] text-yellow-400 border-none"
         >
           <AiFillStar />
         </p>
       ) : (
         <p
           onClick={favoriteClickListener}
-          className="transition-all duration-300 text-[30px] ml-[338px] text-gray-400"
+          className="transition-all duration-300 text-[30px] ml-[308px] text-gray-400"
         >
           <AiOutlineStar />
         </p>
       )}
-
       {/* <p className="ml-[5px] font-main text-[23px] text-black font-bold"></p> */}
     </div>
   );

@@ -75,7 +75,7 @@ const MainPage = () => {
 
       <NoticeListSaved />
       <NoticeListToday isAvailable={isAvailable} />
-
+      <div className="min-w-[395px] bg-light-blue min-h-[130px]"></div>
       {/* <div className="container max-w-[346px] h-[130px] mt-[40px] mx-auto flex flex-col items-start justify-start bg-light-blue"></div> */}
     </div>
   );
