@@ -14,10 +14,6 @@ db = firestore.client()
 
 app = Flask(__name__)
 CORS(app)
-@app.route('/')
-def hello_world():
-    print("test2")
-    return "<h1>Hello World!</h1>"
 
 @app.route('/jobtify/<jobtify_text>')
 def jobtify(jobtify_text):
