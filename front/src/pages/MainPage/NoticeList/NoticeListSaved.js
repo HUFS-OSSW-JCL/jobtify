@@ -9,15 +9,17 @@ const NoticeListSaved = () => {
   const [isFav, setIsFav] = useRecoilState(favState);
 
   useEffect(() => {
-    console.log(isFav);
-    setIsFav(false);
-    for (let i = 0; i < usrData.length; i++) {
-      if (usrData[i].bookmark === true) {
-        setIsFav(true);
-        break;
+    if (localStorage.getItem("LOGGED_IN")) {
+      console.log(isFav);
+      setIsFav(false);
+      for (let i = 0; i < usrData.length; i++) {
+        if (usrData[i].bookmark === true) {
+          setIsFav(true);
+          break;
+        }
       }
+      console.log("parse done");
     }
-    console.log("parse done");
   }, [usrData]);
 
   useEffect(() => {}, [isFav]);
