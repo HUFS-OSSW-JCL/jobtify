@@ -20,6 +20,7 @@ const NoticeListSaved = () => {
       }
       console.log("parse done");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [usrData]);
 
   useEffect(() => {}, [isFav]);
