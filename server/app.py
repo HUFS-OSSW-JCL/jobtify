@@ -61,6 +61,7 @@ def set_jds():
 @app.route('/get_jd', methods=['POST'])
 def get_jd():
     data = request.json
+    print(data)
     uid = data.get('uid')
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     jds = doc_ref.where(u'link', u'==', data.get('link')).stream()
@@ -83,6 +84,7 @@ def get_jd():
                     }
                 )
             )
+    print(response)
     return response
 
 @app.route('/set_bookmark', methods=['POST'])
@@ -106,6 +108,8 @@ def set_bookmark():
 
 @app.route('/get_crawl_info', methods=['POST'])
 def get_crawl_info():
+    data = request.json
+    print(data)
     json_arr = []
     uids_stream = db.collection(u'users').stream()
     for uid in uids_stream:
@@ -117,6 +121,7 @@ def get_crawl_info():
         }
         json_arr.append(json_uid)
     response = make_response(jsonify(json_arr))
+    print(response)
     return response
 
 if __name__ == '__main__':
