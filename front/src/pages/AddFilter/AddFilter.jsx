@@ -27,12 +27,6 @@ const AddFilter = () => {
       <div className="pt-[75px]" />
       <div className="w-[390px] flex flex-col items-center justify-center">
         <div className="flex flex-col">
-          <label
-            htmlFor="filtername"
-            className="flex items-start font-bold text-gray-700 font-main"
-          >
-            필터 이름
-          </label>
           <input type="text" className="hidden" />
           <input
             type="text"
