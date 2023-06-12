@@ -28,16 +28,16 @@ const AddFilter = () => {
       <div className="w-[390px] flex flex-col items-center justify-center">
         <div className="flex flex-col">
           <input type="text" className="hidden" />
-          <input
+          {/* <input
             type="text"
             id="filtername"
             className="font-main mt-[8px] rounded-lg flex-1 border border-gray-300 w-[320px] py-2 px-2 bg-white text-gray-700 placeholder-gray-400 text-base focus:outline-none focus:ring-2 focus:ring-red transition-all duration-150 focus:border-transparent"
             name="filtername"
             placeholder=""
-          />
+          /> */}
         </div>
         <div className="flex flex-col">
-          <p className="space-x-1 ml-[14px] mt-[32px] font-main text-[16px] text-black font-bold">
+          <p className="space-x-1 ml-[14px] mt-[0px] font-main text-[16px] text-black font-bold">
             직무 키워드
           </p>
           <Keyword />
