@@ -55,14 +55,6 @@ def get_jds():
     print(response)
     return response
 
-@app.route('/set_jds', methods=['POST'])
-def set_jds():
-    data = request.json
-    print(data)
-    response = make_response(jsonify({'status': 'good'}))
-    print(response)
-    return response
-
 #요청 시, 단일 jd 정보를 response
 @app.route('/get_jd', methods=['POST'])
 def get_jd():
