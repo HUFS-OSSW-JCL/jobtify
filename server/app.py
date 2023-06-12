@@ -15,12 +15,6 @@ db = firestore.client()
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/fname/<fname>/keywords/<keywords>')
-def jobtify2(fname, keywords):
-    print(fname)
-    print(keywords.split("=="))
-    return fname
-
 @app.route('/json_test', methods=['POST'])
 def handle_json():
     data = request.json
