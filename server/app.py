@@ -2,7 +2,6 @@ from flask import Flask, request, make_response, jsonify
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from firebase_admin import auth
 from flask_cors import CORS
 
 #Firebase, Firestore 설정
