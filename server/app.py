@@ -26,7 +26,6 @@ def register_user():
     response.headers["Access-Control-Allow-Origin"] = "*"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, X-Requested-With"
-    print(uid, keywords, country, sites)
     print(data)
     doc_ref = db.collection(u'users').document(uid)
     doc_ref.set({
@@ -46,7 +45,6 @@ def get_jds():
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     docs = doc_ref.stream()
     for doc in docs:
-        print(doc)
         jds.append(doc.to_dict())
     response = make_response(jsonify(jds))
     print(response)
@@ -95,7 +93,6 @@ def set_bookmark():
     doc_ref = db.collection(u'users').document(uid).collection(u'jds')
     docs = doc_ref.where(u'link', u'==', data.get('link')).stream()
     for doc in docs:
-        print(f'{doc.id} => {doc.to_dict()}')
         doc_ref.document(doc.id).set({
             u'bookmark':data.get('bookmark'),
             u'company':doc.to_dict()['company'],
@@ -112,7 +109,6 @@ def get_crawl_info():
     json_arr = []
     uids_stream = db.collection(u'users').stream()
     for uid in uids_stream:
-        print(uid.id)
         json_uid = {
             'uid': uid.id,
             'country': uid.to_dict()['country'],
