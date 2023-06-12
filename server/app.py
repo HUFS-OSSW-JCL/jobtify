@@ -109,19 +109,18 @@ def set_bookmark():
 
 @app.route('/get_crawl_info', methods=['POST'])
 def get_crawl_info():
-    uid = 'etFgreEMKxYI726JSZ164rRcY3x1'
-    info_ref = db.collection(u'users').document(uid)
-    info = info_ref.get()
-    response = make_response(
-        jsonify(
-            {
-                'uid': uid,
-                'country': info.to_dict()['country'],
-                'keywords': info.to_dict()['keywords'],
-                'sites': info.to_dict()['sites']
-            }
-        )
-    )
+    json_arr = []
+    uids_stream = db.collection(u'users').stream()
+    for uid in uids_stream:
+        print(uid.id)
+        json_uid = {
+            'uid': uid.id,
+            'country': uid.to_dict()['country'],
+            'keywords': uid.to_dict()['keywords'],
+            'sites': uid.to_dict()['sites']
+        }
+        json_arr.append(json_uid)
+    response = make_response(jsonify(json_arr))
     return response
 
 if __name__ == '__main__':
