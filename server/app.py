@@ -5,7 +5,7 @@ from firebase_admin import firestore
 from flask_cors import CORS
 
 #Firebase, Firestore 설정
-cred = credentials.Certificate('./env/jobtify-jcl-firebase-adminsdk-486oy-8b1b68b8bd.json')
+cred = credentials.Certificate('./env/jobtify-jcl-firebase-adminsdk-486oy-6b851c27cc.json')
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -117,11 +117,8 @@ def set_bookmark():
     return response
 
 #요청 시 크롤링에 필요한 정보 response
-@app.route('/get_crawl_info', methods=['POST'])
+@app.route('/get_crawl_info', methods=['GET'])
 def get_crawl_info():
-    #reuqest 데이터 추출
-    data = request.json
-    print(data)
     json_arr = []
 
     #user들의 uid, country, keywords, sites를 배열 형태로 reponse json 생성
