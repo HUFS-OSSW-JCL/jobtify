@@ -89,6 +89,7 @@ def get_jd():
                     }
                 )
             )
+            break
     print(response)
     return response
 
@@ -140,10 +141,7 @@ def get_crawl_info():
 #jd 데이터들을 받아 DB에 저장
 @app.route('/set_jds', methods=['POST'])
 def set_jds():
-    data = request.json
-    data = data.replace('\'', '\"')
-    jds = json.loads(data)
-    print(jds[0])
+    jds = request.json
     for jd in jds:
         uid = jd['uid']
         json_jd = {
