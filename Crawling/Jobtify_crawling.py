@@ -30,19 +30,25 @@ def siteFilter(sitename, keyword, area):
 
 if __name__ == "__main__":
 
-    r = requests.post(get_url)
-    json_data = r.json()
-    keys = json_data["keywords"]
-    area = json_data["country"]
-    site_list = json_data["sites"]
+    r = requests.get(get_url)
+    json_data = json.loads(r.content)
+    # keys = json_data["keywords"]
+    # area = json_data["country"]
+    # site_list = json_data["sites"]
 
-    threads = []
+    print(json_data)
+    for d in json_data:
+        keys = d["keywords"]
+        area = d["country"]
+        site_list = d["sites"]
 
-    for site in site_list:
-        for key in keys:
-            t = threading.Thread(target = siteFilter, args = (site, key, area))
-            t.start()
-            threads.append(t)
+        threads = []
 
-    for t in threads:
-        t.join()
+        for site in site_list:
+            for key in keys:
+                t = threading.Thread(target = siteFilter, args = (site, key, area))
+                t.start()
+                threads.append(t)
+
+        for t in threads:
+            t.join()
