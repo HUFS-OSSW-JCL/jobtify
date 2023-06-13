@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=300&fontSize=95&section=header&text=JCL&animation=fadeIn&fontAlignY=38&desc=오픈소스SW및실습%20-%2017팀&descAlignY=55&descAlign=50)
+<img width="1080" alt="Screenshot 2023-06-13 at 22 53 39" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/a0ad7698-1782-4e9f-9e46-7edfd43dd6a9">
 
 # :family: 팀원
 |이름|역할|GitHub|
@@ -63,3 +63,16 @@
   <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat-square&logo=Amazon S3&logoColor=white"/>
 </div>
 
+## 🏃🏻 실제 구동 화면
+<div style="flex-direction: row">
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/cf02fa04-0f10-4b7d-aa61-1b232149c7e3" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/d316019d-ef43-4e79-bd7f-65fe37641667" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/7a1563bc-fbf2-4b26-85bd-c1397cd987a6" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/bb9983cd-2c8c-4bf6-9fa9-b341b1e61af8" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/c81ce938-f2af-4e54-93e4-759fd8cab7be" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/1b46cc43-0f84-42ee-86a7-19067ff3c1f4" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/8d6df886-d21c-42a4-815f-9dc5f4d88150" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/0c4a842f-f89c-420a-8323-d6f4ab55fa58" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/41b6c806-6023-484c-b3cf-65bd96b1381e" />
+
+</div>
