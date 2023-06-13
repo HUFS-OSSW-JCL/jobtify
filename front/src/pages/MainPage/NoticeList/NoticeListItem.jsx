@@ -52,13 +52,13 @@ const NoticeListItem = (props) => {
     <Fragment>
       <div
         onClick={onClickListener}
-        className="w-[296px] h-[70px] ml-[3px] mb-[5px] bg-white flex flex-row justify-start items-center"
+        className="w-[300px] min-h-[70px] ml-[3px] mb-[5px] bg-white flex flex-row justify-start items-center"
       >
-        <div className="w-[296px] h-[65px] bg-white flex flex-row justify-start items-center">
+        <div className="w-[300px] min-h-[70px] bg-white flex flex-row justify-start items-center">
           <div className="w-[45px] h-[45px] flex justify-center items-center rounded-full border border-gray-300">
             <img className="rounded-full" src={badge} alt="jobkorea" />
           </div>
-          <div className="ml-[15px] flex flex-col">
+          <div className="pl-[15px] max-w-[255px] overflow-auto">
             <p className="text-[15px] text-gray-500 font-main">
               {props.company}
             </p>
