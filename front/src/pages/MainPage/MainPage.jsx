@@ -28,6 +28,7 @@ const MainPage = () => {
       .then((response) => {
         setUserData(response.data);
         setLoaded(true);
+        setIsAvailable(true);
         console.log(response.data);
       })
       .catch((e) => console.log(e));

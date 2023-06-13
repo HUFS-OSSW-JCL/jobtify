@@ -9,7 +9,7 @@ const NoticeListSaved = () => {
   const [isFav, setIsFav] = useRecoilState(favState);
 
   useEffect(() => {
-    if (localStorage.getItem("LOGGED_IN")) {
+    if (usrData && localStorage.getItem("LOGGED_IN")) {
       console.log(isFav);
       setIsFav(false);
       for (let i = 0; i < usrData.length; i++) {
