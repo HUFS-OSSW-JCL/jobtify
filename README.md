@@ -1,5 +1,11 @@
 <img width="1080" alt="Screenshot 2023-06-13 at 22 53 39" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/a0ad7698-1782-4e9f-9e46-7edfd43dd6a9">
 
+> 한국외대 2023-1 오픈소스SW및실습 17팀 JCL의 팀 프로젝트 Repository입니다.
+>
+<br>
+
+
+
 # :family: 팀원
 |이름|역할|GitHub|
 |------|---|---|
