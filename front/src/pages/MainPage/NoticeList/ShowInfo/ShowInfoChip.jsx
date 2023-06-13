@@ -19,10 +19,14 @@ const ShowInfoChip = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onClickListener = () => {
+    window.open(props.link);
+  };
+
   useEffect(() => {}, [setBadge]);
 
   return (
-    <div className="mr-[10px]">
+    <div className="mr-[10px]" onClick={onClickListener}>
       <div className="w-max h-[45px] mt-[7px] border border-gray-300 flex flex-row justify-start items-center bg-white rounded-3xl transition-colors duration-300">
         <div className="w-[28px] h-[28px] ml-[10px] flex justify-center items-center rounded-full border border-gray-300 transition-colors duration-300">
           <img className="rounded-full" src={badge} alt="jobkorea" />

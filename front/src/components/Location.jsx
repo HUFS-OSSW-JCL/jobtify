@@ -61,7 +61,7 @@ const Location = () => {
         <input
           type="text"
           id="location"
-          className="mt-[8px] rounded-lg flex-1 border border-gray-300 w-[320px] py-2 px-2 bg-white text-gray-700 placeholder-gray-400 font-main text-base focus:outline-none focus:ring-2 focus:ring-red transition-all duration-150 focus:border-transparent"
+          className="mt-[8px] rounded-lg flex-1 border border-gray-300 w-[320px] py-2 px-2 bg-white text-gray-700 placeholder-gray-400 font-main text-base focus:ring-2 focus:ring-red transition-all duration-150 focus:border-none"
           name="location"
           placeholder=""
           onChange={inputChangeHandler}

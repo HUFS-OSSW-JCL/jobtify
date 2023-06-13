@@ -105,7 +105,9 @@ const ShowInfo = (props) => {
         {crawls &&
           crawls.map((item) => {
             if (item !== "") {
-              return <ShowInfoChip name={item} pic={item} key={item} />;
+              return (
+                <ShowInfoChip name={item} pic={item} key={item} link={link} />
+              );
             } else {
               return null;
             }
