@@ -135,5 +135,15 @@ def get_crawl_info():
     print(response)
     return response
 
+#jd 데이터들을 받아 DB에 저장
+@app.route('/set_jds', methods=['POST'])
+def set_jds():
+    #request 중 uid 값 추출
+    data = request.json
+    print(data)
+    response = make_response(jsonify({'status': 'good'}))
+    print(response)
+    return response
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
