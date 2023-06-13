@@ -3,6 +3,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from flask_cors import CORS
+import json
 
 #Firebase, Firestore 설정
 cred = credentials.Certificate('./env/jobtify-jcl-firebase-adminsdk-486oy-6b851c27cc.json')
@@ -139,9 +140,21 @@ def get_crawl_info():
 #jd 데이터들을 받아 DB에 저장
 @app.route('/set_jds', methods=['POST'])
 def set_jds():
-    #request 중 uid 값 추출
     data = request.json
-    print(data)
+    data = data.replace('\'', '\"')
+    jds = json.loads(data)
+    print(jds[0])
+    for jd in jds:
+        uid = jd['uid']
+        json_jd = {
+            'bookmark': False,
+            'company': jd['company'],
+            'link': jd['link'],
+            'site': jd['site'],
+            'title': jd['title']
+        }
+        db.collection(u'users').document(uid).collection(u'jds').add(json_jd)
+
     response = make_response(jsonify({'status': 'good'}))
     print(response)
     return response
