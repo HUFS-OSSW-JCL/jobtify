@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-def SearchJob(keyword, area_list):
+def SearchJob(keyword, area_list, uid):
     incruit = Crawl_Function.Crawler("https://job.incruit.com/jobdb_list/searchjob.asp?ct=3&ty=1&cd=149")
     incruit.OpenSite()
 
@@ -39,7 +39,7 @@ def SearchJob(keyword, area_list):
     try:
         while 1:
             job_lists = incruit.GetJobInfo("cBbslist_contenst", "li")
-            job_dict = incruit.ReturnList(job_lists, "div.cell_mid > div.cl_top","div.cell_first > div.cl_top > a", "div.cell_mid > div.cl_top > a", 'incruit')
+            job_dict = incruit.ReturnList(job_lists, "div.cell_mid > div.cl_top","div.cell_first > div.cl_top > a", "div.cell_mid > div.cl_top > a", 'incruit', uid)
             incruit.Click_By_CSS_SELECTOR("#JobList_Area > div.cPrdlists_wrap.cPrdlists_wrap_respon > p > a.next_n")
             incruit.driver.implicitly_wait(5)
     except Exception:

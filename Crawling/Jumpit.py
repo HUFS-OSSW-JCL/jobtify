@@ -2,14 +2,15 @@ import Crawl_Function
 import time
 from selenium.webdriver.common.by import By
 
-def SearchJob(keyword, area_list):
+def SearchJob(keyword, area_list, uid):
     jumpit = Crawl_Function.Crawler("https://www.jumpit.co.kr/")
     jumpit.OpenSite()
     """
     점핏 실행시 나오는 광고를 지움
     """
     try:
-        jumpit.Click_By_CSS_SELECTOR("#modal > div > div > div.sc-ewSTlh.bkQpMn > button:nth-child(2)")
+        jumpit.Click_By_XPATH("//*[@id=\"modal\"]/div/div/div[2]/button[1]")
+
         time.sleep(2)
     except Exception:
         pass
@@ -54,8 +55,11 @@ def SearchJob(keyword, area_list):
     GetJobInfo, ReturnList함수를 이용해 채용공고들을 긁어옴
     """
     try:
-        job_lists = jumpit.GetJobInfo("sc-fkJVfC.cVBfrj", "div")
-        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-gUQvok.iPhfkg > h2", "a > div.sc-gUQvok.iPhfkg > div", "a", "jumpit")
+        job_lists = jumpit.GetJobInfo("sc-iuqRDJ.bHhWGi", "div")
+        job_dict = jumpit.ReturnList(job_lists, "a > div.sc-fXeWAj.jhnFrK > h2", "a > div.sc-fXeWAj.jhnFrK > div > span", "a", "jumpit", uid)
     except Exception as e:
         pass
-    return job_dict
+    try:
+        return job_dict
+    except Exception as e:
+        pass

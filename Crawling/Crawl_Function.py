@@ -15,7 +15,7 @@ class Crawler:
         self.url = url
         #self.options.add_argument("--window-size = 1920, 1080")
         #self.options.add_argument("--headless")
-        self.driver = webdriver.Chrome(chrome_options=self.options)
+        self.driver = webdriver.Chrome()
 
     """
     처음에 클래스를 만들 때 인자로 받은 url을 여는 함수
@@ -51,7 +51,7 @@ class Crawler:
     GetJobInfo함수를 통해 가져온 채용공고 리스트에서 공고명, 모집회사명, 모집기간, 세부정보를 볼 수 있는 링크를 딕셔너리에 저장하고, 만들어진 딕셔너리를 리스트에 담아서 리턴
     """
 
-    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_link_selector,site):
+    def ReturnList(self, job_lists, job_title_selector, job_company_selector, job_link_selector, site, uid):
         try:
             for jobs in job_lists:
                 job_dict = {}
@@ -63,6 +63,7 @@ class Crawler:
                     job_dict['company'] = job_company.text
                     job_dict['link'] = job_link
                     job_dict['site'] = site
+                    job_dict['uid'] = uid
                     self.job_list.append(job_dict)
                 except Exception as e:
                     pass

@@ -2,7 +2,7 @@ import Crawl_Function
 import time
 from selenium.webdriver.common.by import By
 
-def SearchJob(keyword, area):
+def SearchJob(keyword, area, uid):
     rallit = Crawl_Function.Crawler("https://www.rallit.com/")
     rallit.OpenSite()
     rallit.driver.implicitly_wait(10)
@@ -43,6 +43,7 @@ def SearchJob(keyword, area):
             job_dict['company'] = job_company.text
             job_dict['link'] = job_link
             job_dict['site'] = "rallit"
+            job_dict['uid'] = uid
             jobs.append(job_dict)
     except Exception:
         pass
