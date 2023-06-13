@@ -120,18 +120,29 @@ def set_bookmark():
 @app.route('/get_crawl_info', methods=['GET'])
 def get_crawl_info():
     json_arr = []
-
+    country= []
     #user들의 uid, country, keywords, sites를 배열 형태로 reponse json 생성
     uids_stream = db.collection(u'users').stream()
     for uid in uids_stream:
+        country.append(uid.to_dict()['country'])
         json_uid = {
             'uid': uid.id,
-            'country': uid.to_dict()['country'],
+            'country': country,
             'keywords': uid.to_dict()['keywords'],
             'sites': uid.to_dict()['sites']
         }
         json_arr.append(json_uid)
     response = make_response(jsonify(json_arr))
+    print(response)
+    return response
+
+#jd 데이터들을 받아 DB에 저장
+@app.route('/set_jds', methods=['POST'])
+def set_jds():
+    #request 중 uid 값 추출
+    data = request.json
+    print(data)
+    response = make_response(jsonify({'status': 'good'}))
     print(response)
     return response
 
