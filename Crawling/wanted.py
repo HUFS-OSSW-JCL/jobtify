@@ -5,7 +5,7 @@ import time
 
 
 
-def SearchJob(keyword, area_list):
+def SearchJob(keyword, area_list, uid):
     wanted = Crawl_Function.Crawler("https://www.wanted.co.kr")
     wanted.OpenSite()
     wanted.Search(keyword, "//*[@id=\"__next\"]/div[1]/div/nav/aside/ul/li[1]/button", "//*[@id=\"__next\"]/div[1]/div[2]/div/div[2]/div/form/input")
@@ -46,5 +46,5 @@ def SearchJob(keyword, area_list):
 
     list = wanted.driver.find_element(By.CSS_SELECTOR, "#__next > div.Search_SearchContainer__aPKM_ > div > div.Search_Search__PUJPw")
     list2 = list.find_elements(By.CSS_SELECTOR, "div")
-    job_list = wanted.ReturnList(list2, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ","a", "wanted")
+    job_list = wanted.ReturnList(list2, "a > div.JobCard_content__5mZPT > strong", "a > div.JobCard_content__5mZPT > span.JobCard_companyContent__zUT91 > span.JobCard_companyName__vZMqJ","a", "wanted", uid)
     return job_list
