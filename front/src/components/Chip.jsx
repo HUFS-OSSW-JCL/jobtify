@@ -31,7 +31,6 @@ const Chip = (props) => {
     const i = clonetags.indexOf(props.id);
     clonetags.splice(i, 1);
     setCrawl(clonetags);
-    // console.log(keyword);
   };
 
   useEffect(() => {
