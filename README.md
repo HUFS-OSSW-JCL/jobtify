@@ -69,10 +69,10 @@
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/d316019d-ef43-4e79-bd7f-65fe37641667" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/7a1563bc-fbf2-4b26-85bd-c1397cd987a6" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/bb9983cd-2c8c-4bf6-9fa9-b341b1e61af8" />
+  <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/72d2a193-0885-41b3-8290-3bcfc224a561" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/c81ce938-f2af-4e54-93e4-759fd8cab7be" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/1b46cc43-0f84-42ee-86a7-19067ff3c1f4" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/8d6df886-d21c-42a4-815f-9dc5f4d88150" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/0c4a842f-f89c-420a-8323-d6f4ab55fa58" />
   <img width="200" src="https://github.com/HUFS-OSSW-JCL/jobtify/assets/80333011/41b6c806-6023-484c-b3cf-65bd96b1381e" />
-
 </div>
