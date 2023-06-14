@@ -49,7 +49,7 @@ const ShowInfo = (props) => {
   const link = data.state?.link;
 
   return (
-    <div className="container max-w-[390px] mx-auto flex flex-col items-start justify-start">
+    <div className="container min-w-[390px] mx-auto flex flex-col items-center justify-center">
       <Helmet>
         <meta name="theme-color" content="#FFFFFF" />
       </Helmet>
@@ -66,7 +66,7 @@ const ShowInfo = (props) => {
         <p className="text-[18px] font-main text-gray-400 mb-[-5px]">
           {dataState ? company : <p>Loading...</p>}
         </p>
-        <p className="w-[380px] overflow-auto text-[34px] font-main font-bold text-black">
+        <p className="max-w-[370px] overflow-auto text-[34px] font-main font-bold text-black">
           {dataState ? title : <p>Loading...</p>}
         </p>
       </div>
